@@ -214,11 +214,6 @@ ul{list-style:none;}
   align-items:flex-start;
   gap:1rem;
 }
-.hero-photo{
-  flex:0 0 170px;
-  height:220px;
-}
-
 .photo-frame{
   border-radius:var(--radius-lg);
   border:1px dashed rgba(148,163,184,0.6);
