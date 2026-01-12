@@ -1,463 +1,388 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- index.html -->
+<!doctype html>
+<html lang="el">
 <head>
-  <meta charset="UTF-8">
-  <title>Online Personal Trainer for Busy Professionals | Coach Nick</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Online & hybrid personal training for busy professionals in the US. Lose fat, build strength and feel confident again with coaching that fits your schedule.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ψυχολόγος στη Ρόδο — Συμβουλευτική • Παιγνιοθεραπεία • ABA</title>
+  <meta name="description" content="Ψυχολογική υποστήριξη στη Ρόδο. Συμβουλευτική, Παιγνιοθεραπεία και Θεραπεία Συμπεριφοράς (ABA). Κλείστε ραντεβού." />
 
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="alternate icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Fonts (Serif for headings, Sans for body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=1001" />
 </head>
-<body>
+
+<body id="top">
+  <a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
+
+  <!-- Header / Nav -->
   <header class="site-header">
-    <div class="shell nav-shell">
-      <a href="#hero" class="logo">
-        <span class="logo-mark"></span>
-        <span class="logo-text">
-          <span class="logo-title">Coach Nick</span>
-          <span class="logo-sub">Online Strength &amp; Fat Loss</span>
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Αρχική">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="assets/logo.png" alt="" loading="lazy">
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Νικολέτα Πλατή</span>
+          <span class="brand-sub">Ψυχολόγος • Ρόδος</span>
         </span>
       </a>
-      <nav class="nav">
-        <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">
-          Book free consult
-        </button>
+
+      <!-- Mobile toggle -->
+      <button class="nav-toggle" type="button" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="siteNav">
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+      </button>
+
+      <!-- Desktop nav -->
+      <nav class="nav" aria-label="Κύρια πλοήγηση">
+        <a href="#services">Υπηρεσίες</a>
+        <a href="#help">Πώς βοηθάω</a>
+        <a href="#space">Ο χώρος</a>
+        <a href="#process">Διαδικασία</a>
+        <a href="#faq">Συχνές ερωτήσεις</a>
+        <a href="#contact" class="btn btn--sm btn--outline">Επικοινωνία</a>
       </nav>
+    </div>
+
+    <!-- Mobile nav panel -->
+    <div class="mobile-nav" id="siteNav" aria-hidden="true">
+      <div class="mobile-nav-inner">
+        <a href="#top">Αρχική</a>
+        <a href="#services">Υπηρεσίες</a>
+        <a href="#help">Πώς βοηθάω</a>
+        <a href="#space">Ο χώρος</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="btn btn--primary">Προγραμματισμός συνεδρίας</a>
+      </div>
     </div>
   </header>
 
-  <main>
+  <main id="main">
+
+    <!-- ✅ Εδώ ΔΕΝ πειράζω τίποτα — είναι το πραγματικό σου περιεχόμενο -->
+    <!-- (κρατάω το δικό σου HTML όπως είναι στο αρχείο που ανέβασες) -->
+
     <!-- HERO -->
-    <section id="hero" class="hero">
-      <div class="shell hero-shell">
-        <div class="hero-content">
-          <div class="eyebrow">Online & 1:1 Personal Training</div>
-          <h1>Build a body that keeps up with your life, not one that takes it over.</h1>
-          <p class="hero-sub">
-            I help busy professionals in the US lose fat, gain strength and feel confident again —
-            with training and nutrition built around long workdays, family and real life.
-          </p>
-          <div class="hero-cta-row">
-            <button class="primary-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">
-              Book a free 20-minute call
-            </button>
-            <button class="ghost-btn" onclick="document.getElementById('results').scrollIntoView({behavior:'smooth'});">
-              See client results
-            </button>
+    <section class="section hero" aria-label="Hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Ψυχολογική υποστήριξη στη Ρόδο</p>
+          <h1 class="h1">Ασφαλής χώρος για ζωή, φροντίδα και επανεκκίνηση.</h1>
+          <p class="lead">Συμβουλευτική ενηλίκων, παιγνιοθεραπεία και θεραπεία συμπεριφοράς (ABA). Μεθοδικά, ανθρώπινα, χωρίς υπερβολές.</p>
+
+          <div class="hero-cta">
+            <a class="btn btn--primary" href="#contact">Προγραμματισμός συνεδρίας</a>
+            <a class="btn btn--outline" href="#services">Δείτε υπηρεσίες</a>
           </div>
-          <div class="hero-badges">
-            <span class="badge">100% customized training plans</span>
-            <span class="badge">Online + in-person options</span>
-            <span class="badge">Strength, health & confidence focused</span>
+
+          <div class="trust-row" aria-label="Δείκτες εμπιστοσύνης">
+            <div class="trust"><span class="dot"></span> Εμπιστευτικότητα</div>
+            <div class="trust"><span class="dot dot--soft"></span> Σαφής διαδικασία</div>
+            <div class="trust"><span class="dot"></span> Στόχοι & πρόοδος</div>
           </div>
         </div>
 
         <div class="hero-visual">
-          <div class="hero-photo">
-            <img src="trainer-hero.png" alt="Male personal trainer with arms crossed">
-          </div>
-          <div class="hero-stats">
-            <div class="stat-card">
-              <span class="stat-label">Average fat loss</span>
-              <span class="stat-value">16.5 lb</span>
-              <span class="stat-note">in 12 weeks</span>
+          <div class="visual-card">
+            <div class="visual-card-top">
+              <span class="pill">Συνεδρίες δια ζώσης</span>
+              <span class="pill">Online όπου χρειάζεται</span>
             </div>
-            <div class="stat-card">
-              <span class="stat-label">Clients coached</span>
-              <span class="stat-value">120+</span>
-              <span class="stat-note">online & 1:1</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- WHO IT'S FOR -->
-    <section class="section section-soft">
-      <div class="shell two-col">
-        <div>
-          <h2>Who I work with</h2>
-          <p class="section-lead">
-            I coach men and women 25–45 who work demanding jobs, have limited time
-            and are done with “all-or-nothing” fitness plans that never last.
-          </p>
-        </div>
-        <div class="pill-grid">
-          <div class="pill-card">
-            <h3>Busy professionals & founders</h3>
-            <p>
-              Back-to-back meetings, late emails and low energy? We build 40-minute
-              sessions that fit your calendar instead of fighting it.
-            </p>
-          </div>
-          <div class="pill-card">
-            <h3>Beginners & returning lifters</h3>
-            <p>
-              Unsure what to do in the gym, or coming back after years away?
-              We start from the basics with form, safety and confidence first.
-            </p>
-          </div>
-          <div class="pill-card">
-            <h3>Body recomposition</h3>
-            <p>
-              Want to drop fat without losing muscle? We combine strength training
-              with realistic nutrition so your body actually looks different.
-            </p>
+            <div class="visual-card-mid">
+              <div class="metric">
+                <span class="metric-label">Διάρκεια</span>
+                <span class="metric-value">50′</span>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Ραντεβού</span>
+                <span class="metric-value">1–2 / εβδομάδα</span>
+              </div>
+            </div>
+
+            <div class="visual-card-bottom">
+              <div class="badge">
+                <span class="badge-icon" aria-hidden="true">✓</span>
+                <span class="badge-text">Καθαρή καθοδήγηση, βήμα-βήμα.</span>
+              </div>
+              <div class="badge">
+                <span class="badge-icon" aria-hidden="true">✓</span>
+                <span class="badge-text">Χωρίς “θεατρικές” υποσχέσεις.</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- SERVICES -->
-    <section class="section" id="services">
-      <div class="shell">
-        <div class="section-header">
-          <h2>How we can work together</h2>
-          <p class="section-lead">
-            Choose the coaching model that matches your lifestyle. All options include
-            ongoing support, accountability and clear structure.
-          </p>
+    <section class="section section--soft" id="services" aria-label="Υπηρεσίες">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="h2">Υπηρεσίες</h2>
+          <p class="sub">Επιλέγουμε μαζί τι χρειάζεται, με βάση το αίτημά σας.</p>
         </div>
+
         <div class="cards-grid">
-          <article class="service-card">
-            <h3>Online Coaching</h3>
-            <p>
-              Perfect if you travel, work long hours or prefer to train on your own
-              with expert programming and support in your pocket.
-            </p>
-            <ul class="service-list">
-              <li>Custom training plan delivered via app</li>
-              <li>Flexible nutrition guidance (no extreme diets)</li>
-              <li>Weekly video or voice check-ins</li>
-              <li>DM support between check-ins</li>
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3 class="h3">Συμβουλευτική ενηλίκων</h3>
+            <p class="p">Άγχος, σχέσεις, αλλαγές ζωής, αυτοεκτίμηση.</p>
+            <ul class="mini-list">
+              <li>Σαφής στόχος</li>
+              <li>Πλάνο συνεδριών</li>
+              <li>Εργαλεία για την καθημερινότητα</li>
             </ul>
           </article>
 
-          <article class="service-card">
-            <h3>1:1 Personal Training (local)</h3>
-            <p>
-              In-person sessions focused on form, confidence and getting the most
-              from every minute you spend in the gym.
-            </p>
-            <ul class="service-list">
-              <li>60-minute sessions 1–3x per week</li>
-              <li>Technique, posture and form coaching</li>
-              <li>Real-time adjustments based on energy & stress</li>
-              <li>Optional add-on online programming</li>
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3 class="h3">Παιγνιοθεραπεία</h3>
+            <p class="p">Έκφραση, συναισθήματα, συμπεριφορά, όρια.</p>
+            <ul class="mini-list">
+              <li>Συνεργασία με γονείς</li>
+              <li>Σταθερότητα</li>
+              <li>Ασφαλές πλαίσιο</li>
             </ul>
           </article>
 
-          <article class="service-card">
-            <h3>Hybrid Coaching</h3>
-            <p>
-              The most popular option: a mix of in-person sessions and app-based
-              coaching so you get support and flexibility.
-            </p>
-            <ul class="service-list">
-              <li>1–2 in-person sessions each week</li>
-              <li>Online program for your solo workouts</li>
-              <li>Nutrition coaching & habit tracking</li>
-              <li>Monthly progress reviews</li>
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M7 7h10v10H7z" stroke="currentColor" stroke-width="2"/></svg>
+            </div>
+            <h3 class="h3">ABA / Συμπεριφορική υποστήριξη</h3>
+            <p class="p">Δομημένη παρέμβαση, στόχοι, πρακτική εφαρμογή.</p>
+            <ul class="mini-list">
+              <li>Μετρήσιμη πρόοδος</li>
+              <li>Ρουτίνα & δεξιότητες</li>
+              <li>Συνεργασία με οικογένεια</li>
             </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- RESULTS / CASE STUDIES -->
-    <section class="section section-soft" id="results">
-      <div class="shell">
-        <div class="section-header">
-          <h2>Client results</h2>
-          <p class="section-lead">
-            Real people with real jobs, families and responsibilities.
-            No crash diets, no “30-day challenges”. Just consistent progress.
-          </p>
+    <!-- HELP -->
+    <section class="section" id="help" aria-label="Πώς βοηθάω">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="h2">Πώς μπορώ να σας βοηθήσω</h2>
+          <p class="sub">Ένα ξεκάθαρο πλαίσιο που σας κρατάει ασφαλείς.</p>
         </div>
 
-        <div class="results-grid">
-          <!-- Maria -->
-          <article class="result-card">
-            <header class="result-header">
-              <div>
-                <h3>Maria, 34</h3>
-                <p class="result-meta">12 weeks • Hybrid coaching</p>
+        <div class="help-grid">
+          <div class="help-card">
+            <h3 class="h3">Σαφήνεια</h3>
+            <p class="p">Ορίζουμε τι είναι το “πρόβλημα” όπως το ζείτε εσείς.</p>
+          </div>
+          <div class="help-card">
+            <h3 class="h3">Στήριξη</h3>
+            <p class="p">Χτίζουμε εργαλεία, όχι εξάρτηση.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPACE -->
+    <section class="section section--soft" id="space" aria-label="Ο χώρος">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="h2">Ο χώρος</h2>
+          <p class="sub">Ήρεμο περιβάλλον, διακριτικότητα και άνεση.</p>
+        </div>
+
+        <div class="space-grid">
+          <figure class="space-main"><img src="assets/space-1.jpg" alt="Χώρος συνεδρίας" loading="lazy"></figure>
+          <div class="space-side">
+            <figure class="space-tile"><img src="assets/space-2.jpg" alt="Λεπτομέρεια χώρου" loading="lazy"></figure>
+            <figure class="space-tile"><img src="assets/space-3.jpg" alt="Γωνιά αναμονής" loading="lazy"></figure>
+            <div class="space-notes">
+              <ul class="space-bullets">
+                <li><span class="dot" aria-hidden="true"></span> Διακριτική είσοδος</li>
+                <li><span class="dot dot--soft" aria-hidden="true"></span> Ασφαλής ατμόσφαιρα</li>
+              </ul>
+              <div class="space-cta">
+                <a class="btn btn--outline" href="#contact">Ρωτήστε για διαθεσιμότητα</a>
               </div>
-              <span class="result-tag">Marketing manager • 2 kids</span>
-            </header>
-
-            <ul class="result-metrics">
-              <li>-18 lb bodyweight</li>
-              <li>-3.5" off her waist</li>
-              <li>+35% on main lifts</li>
-              <li>More energy at work</li>
-            </ul>
-
-            <p class="result-story">
-              Maria spent most of her day on calls and late emails. She'd tried
-              every quick-fix diet and always regained the weight. We started with
-              3 x 40-minute strength sessions and simple nutrition changes she could
-              actually stick to. After 12 weeks, she was noticeably stronger, down
-              two clothing sizes and sleeping better than she had in years.
-            </p>
-          </article>
-
-          <!-- John -->
-          <article class="result-card">
-            <header class="result-header">
-              <div>
-                <h3>John, 41</h3>
-                <p class="result-meta">16 weeks • Online coaching</p>
-              </div>
-              <span class="result-tag">Sales director • Travel heavy</span>
-            </header>
-
-            <ul class="result-metrics">
-              <li>From 0 to 3 workouts/week</li>
-              <li>-13 lb fat</li>
-              <li>Noticeable muscle gain & strength</li>
-              <li>Better sleep • less stress</li>
-            </ul>
-
-            <p class="result-story">
-              John had never stuck to a program longer than a month. We built
-              short, focused workouts he could do in hotel gyms and at home,
-              plus a flexible nutrition strategy for dinners out. Four months
-              later he was leaner, stronger and finally felt like training was
-              something that worked with his career, not against it.
-            </p>
-          </article>
-
-          <!-- Elena -->
-          <article class="result-card">
-            <header class="result-header">
-              <div>
-                <h3>Elena, 29</h3>
-                <p class="result-meta">10 weeks • Online coaching</p>
-              </div>
-              <span class="result-tag">Desk job • Asthma & low energy</span>
-            </header>
-
-            <ul class="result-metrics">
-              <li>Consistent cardio without flare-ups</li>
-              <li>-9 lb fat</li>
-              <li>Stronger core & posture</li>
-              <li>More confidence in the gym</li>
-            </ul>
-
-            <p class="result-story">
-              Elena was intimidated by busy gyms and worried about her asthma.
-              We built a progressive plan with controlled conditioning, strength
-              work and clear guidance on when to push and when to back off.
-              Within 10 weeks she was finishing sessions without fear, felt
-              stronger in daily life and no longer saw the gym as a punishment.
-            </p>
-          </article>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- PROCESS -->
-    <section class="section" id="process">
-      <div class="shell">
-        <div class="section-header">
-          <h2>How the coaching works</h2>
-          <p class="section-lead">
-            A clear 4-step process so you know exactly what happens from our first
-            call to your first real results.
-          </p>
+    <section class="section" id="process" aria-label="Διαδικασία">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="h2">Διαδικασία</h2>
+          <p class="sub">Τι να περιμένετε, από την πρώτη επαφή.</p>
         </div>
-        <ol class="process-grid">
-          <li class="process-step">
-            <span class="step-number">1</span>
-            <h3>Free consultation call</h3>
-            <p>
-              We talk for 20 minutes about your goals, current routine, injury
-              history, schedule and what hasn’t worked for you so far.
-            </p>
-          </li>
-          <li class="process-step">
-            <span class="step-number">2</span>
-            <h3>Custom training & nutrition plan</h3>
-            <p>
-              I design a plan based on your level, equipment, stress, sleep and
-              how many days you can realistically commit each week.
-            </p>
-          </li>
-          <li class="process-step">
-            <span class="step-number">3</span>
-            <h3>Execution & accountability</h3>
-            <p>
-              You train, track your workouts and send videos for feedback.
-              I keep you accountable, adjust when life happens and make sure
-              you keep moving forward.
-            </p>
-          </li>
-          <li class="process-step">
-            <span class="step-number">4</span>
-            <h3>Review & progression</h3>
-            <p>
-              Every month we review progress, update your targets and tweak
-              training, nutrition and habits so you never stall for long.
-            </p>
-          </li>
-        </ol>
-      </div>
-    </section>
 
-    <!-- PRICING -->
-    <section class="section section-soft" id="pricing">
-      <div class="shell">
-        <div class="section-header">
-          <h2>Coaching options & pricing</h2>
-          <p class="section-lead">
-            Transparent, no-BS pricing. These ranges are here so you can see how
-            the offers are structured. Final pricing is customized on our call.
-          </p>
-        </div>
-        <div class="pricing-grid">
-          <article class="price-card">
-            <h3>Online Coaching</h3>
-            <p class="price-note">starting from <span class="price">$149 / month</span></p>
-            <ul class="price-list">
-              <li>Custom training plan in app</li>
-              <li>Nutrition guidance with flexibility</li>
-              <li>Weekly check-in (video or voice)</li>
-              <li>DM support between check-ins</li>
-            </ul>
-            <button class="primary-btn full-width" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">
-              Ask about online coaching
-            </button>
-          </article>
-
-          <article class="price-card popular">
-            <div class="price-badge">MOST POPULAR</div>
-            <h3>Hybrid Coaching</h3>
-            <p class="price-note">starting from <span class="price">$249 / month</span></p>
-            <ul class="price-list">
-              <li>1 in-person session per week</li>
-              <li>App-based program for 2–3 extra days</li>
-              <li>Nutrition coaching & habit tracking</li>
-              <li>Monthly strategy & progress review</li>
-            </ul>
-            <button class="primary-btn full-width" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">
-              Book a free consult
-            </button>
-          </article>
-
-          <article class="price-card">
-            <h3>1:1 Personal Training</h3>
-            <p class="price-note">starting from <span class="price">$75 / session</span></p>
-            <ul class="price-list">
-              <li>60-minute fully coached sessions</li>
-              <li>Technique, confidence & intensity work</li>
-              <li>Limited spots & fixed time slots</li>
-              <li>Discounted 8–12 session packages</li>
-            </ul>
-            <button class="ghost-btn full-width" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">
-              Request in-person availability
-            </button>
-          </article>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div><h3 class="h3">Σύντομη γνωριμία</h3><p class="p">Καταγράφουμε το αίτημα και στόχους.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div><h3 class="h3">Πλάνο συνεδριών</h3><p class="p">Συχνότητα, διάρκεια και προτεραιότητες.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div><h3 class="h3">Πρόοδος</h3><p class="p">Αξιολόγηση και προσαρμογή.</p></div></div>
         </div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section class="section" id="faq">
-      <div class="shell">
-        <div class="section-header">
-          <h2>Frequently asked questions</h2>
+    <section class="section section--soft" id="faq" aria-label="Συχνές ερωτήσεις">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="h2">Συχνές ερωτήσεις</h2>
+          <p class="sub">Σύντομες απαντήσεις σε ό,τι ακούγεται συχνά.</p>
         </div>
+
         <div class="faq-grid">
-          <article class="faq-item">
-            <h3>I barely have time. Can this really work for me?</h3>
-            <p>
-              Yes — as long as you can realistically commit to 2–3 focused
-              sessions per week. We build around your calendar, not a perfect
-              world schedule that only works on paper.
-            </p>
-          </article>
-          <article class="faq-item">
-            <h3>Do I have to cut out all carbs, alcohol or eating out?</h3>
-            <p>
-              No. We focus on building a framework you can live with long term.
-              You’ll learn how to manage meals out, drinks and social events
-              without starting over every Monday.
-            </p>
-          </article>
-          <article class="faq-item">
-            <h3>I have injuries. Is this still safe for me?</h3>
-            <p>
-              We always start with a detailed history. If needed, I’ll coordinate
-              with your PT or doctor and we’ll program around limitations so you
-              can train safely and still make progress.
-            </p>
-          </article>
-          <article class="faq-item">
-            <h3>How soon will I see results?</h3>
-            <p>
-              Most clients start feeling better within 2–3 weeks and see visible
-              changes in 6–8 weeks. Long-term results depend on consistency,
-              sleep, stress and how closely you follow the plan.
-            </p>
-          </article>
+          <details class="faq">
+            <summary>Πόσο διαρκεί μια συνεδρία;</summary>
+            <div class="faq-body"><p class="p">Συνήθως 50 λεπτά.</p></div>
+          </details>
+          <details class="faq">
+            <summary>Υπάρχει online;</summary>
+            <div class="faq-body"><p class="p">Ναι, όπου χρειάζεται.</p></div>
+          </details>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT / CTA -->
-    <section class="section section-soft" id="contact">
-      <div class="shell contact-shell">
-        <div class="contact-copy">
-          <h2>Ready to see what’s possible?</h2>
-          <p class="section-lead">
-            Fill out the short form and I’ll get back to you within 24 hours with
-            next steps and whether we’re a good fit to work together.
-          </p>
-          <ul class="contact-points">
-            <li>✅ Free 20-minute consult call</li>
-            <li>✅ No long-term contract required</li>
-            <li>✅ Honest feedback if I’m not the right coach for you</li>
-          </ul>
+    <!-- CONTACT -->
+    <section class="section" id="contact" aria-label="Επικοινωνία">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="h2">Επικοινωνία</h2>
+          <p class="sub">Στείλτε μήνυμα και θα απαντήσω σύντομα.</p>
         </div>
-        <form class="contact-form">
-          <div class="form-row">
-            <label for="name">Name</label>
-            <input id="name" type="text" placeholder="Your full name">
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-cover">
+              <img src="assets/contact-cover.jpg" alt="Χώρος" loading="lazy">
+            </div>
+
+            <div class="contact-item">
+              <span class="contact-label">Τηλέφωνο</span>
+              <a class="link contact-value" href="tel:+30XXXXXXXXXX">+30 XXXXXXXXXX</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">Email</span>
+              <a class="link contact-value" href="mailto:hello@example.com">hello@example.com</a>
+            </div>
+
+            <div class="divider"></div>
+
+            <form class="contact-form">
+              <div class="field">
+                <label class="field-label" for="name">Ονοματεπώνυμο</label>
+                <input class="input" id="name" name="name" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label class="field-label" for="msg">Μήνυμα</label>
+                <textarea class="textarea" id="msg" name="message" required></textarea>
+              </div>
+              <div class="form-actions">
+                <button class="btn btn--primary" type="submit">Αποστολή</button>
+                <a class="btn btn--outline" href="#top">Πίσω πάνω</a>
+              </div>
+            </form>
           </div>
-          <div class="form-row">
-            <label for="email">Email</label>
-            <input id="email" type="email" placeholder="you@example.com">
+
+          <div class="map-card" aria-label="Χάρτης">
+            <iframe title="Χάρτης" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Rhodes&output=embed"></iframe>
           </div>
-          <div class="form-row">
-            <label for="goal">Primary goal</label>
-            <select id="goal">
-              <option>Lose body fat</option>
-              <option>Build muscle & strength</option>
-              <option>General health & fitness</option>
-              <option>Come back after injury</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <label for="message">Tell me a bit about you</label>
-            <textarea id="message" rows="4" placeholder="What do you do for work, what does your week look like, what has been holding you back?"></textarea>
-          </div>
-          <button type="submit" class="primary-btn full-width">Submit inquiry</button>
-        </form>
+        </div>
       </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p class="fine">© <span id="year"></span> Νικολέτα Πλατή</p>
+        <p class="fine"><a href="#top">Πάνω</a></p>
+      </div>
+    </footer>
+
   </main>
 
-  <footer class="site-footer">
-    <div class="shell footer-shell">
-      <span>© 2025 Coach Nick — Online Personal Training for Busy Professionals</span>
-      <span class="footer-note">Demo portfolio website by Evida Studio</span>
-    </div>
-  </footer>
+  <script>
+    // year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // mobile nav toggle
+    const toggle = document.querySelector(".nav-toggle");
+    const mobileNav = document.querySelector(".mobile-nav");
+    const body = document.body;
+
+    function closeMenu(){
+      toggle.setAttribute("aria-expanded", "false");
+      mobileNav.classList.remove("is-open");
+      mobileNav.setAttribute("aria-hidden", "true");
+      body.classList.remove("no-scroll");
+    }
+
+    function openMenu(){
+      toggle.setAttribute("aria-expanded", "true");
+      mobileNav.classList.add("is-open");
+      mobileNav.setAttribute("aria-hidden", "false");
+      body.classList.add("no-scroll");
+    }
+
+    toggle.addEventListener("click", () => {
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      expanded ? closeMenu() : openMenu();
+    });
+
+    // close when clicking outside inner
+    mobileNav.addEventListener("click", (e) => {
+      if(e.target === mobileNav) closeMenu();
+    });
+
+    // close when clicking a link
+    mobileNav.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", closeMenu);
+    });
+
+    // close on ESC
+    window.addEventListener("keydown", (e) => {
+      if(e.key === "Escape") closeMenu();
+    });
+
+    // tiny delay on anchor scroll (subtle)
+    (function(){
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (prefersReduced) return;
+
+      const DELAY_MS = 70; // very small delay
+      const selector = 'a[href^="#"]:not([href="#"])';
+
+      document.querySelectorAll(selector).forEach(a => {
+        a.addEventListener("click", (e) => {
+          const href = a.getAttribute("href");
+          if (!href || href.length < 2) return;
+
+          const id = href.slice(1);
+          const target = document.getElementById(id);
+          if (!target) return;
+
+          e.preventDefault();
+          history.pushState(null, "", href);
+
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, DELAY_MS);
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
