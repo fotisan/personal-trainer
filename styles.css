@@ -1,739 +1,446 @@
-/* styles.css */
-:root{
-  --bg: #f6f1ea;
-  --bg-2:#f1ebe3;
-  --surface:#ffffff;
-  --surface-2:#fbf8f3;
-
-  --ink:#1f1d1a;
-  --muted:#4b4339;
-  --faint:#6a6157;
-
-  --line:#e6ddd1;
-  --line-2:#ded3c4;
-
-  --accent:#c8a57b;
-  --accent-2:#7faea0;
-  --accent-3:#e6c1b1;
-
-  --radius-lg: 26px;
-  --radius-md: 18px;
-  --radius-sm: 12px;
-
-  --shadow: 0 18px 50px rgba(31,29,26,.10);
-  --shadow-soft: 0 12px 34px rgba(31,29,26,.08);
-
-  --container: 1120px;
-
-  --h1: clamp(30px, 4.6vw, 56px);
-  --h2: clamp(22px, 3.0vw, 34px);
-  --h3: 18px;
-  --lead: clamp(16px, 2.05vw, 20px);
-
-  --space-1: 10px;
-  --space-2: 14px;
-  --space-3: 18px;
-  --space-4: 24px;
-  --space-5: 34px;
-  --space-6: 48px;
-  --space-7: 72px;
-
-  --space-m-hero: 44px;
-  --space-m: 54px;
-
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-  --font-serif: "Playfair Display", ui-serif, Georgia, "Times New Roman", serif;
-}
-
-/* ✅ One unified background canvas */
-:root::before{
-  content:"";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(1100px 700px at 12% -10%, rgba(200,165,123,.18), transparent 55%),
-    radial-gradient(900px 600px at 92% 5%, rgba(230,193,177,.18), transparent 55%),
-    radial-gradient(1000px 700px at 80% 88%, rgba(127,174,160,.14), transparent 60%),
-    linear-gradient(180deg, var(--bg), var(--bg-2));
-}
-
-*{ box-sizing: border-box; }
-html, body{ height: 100%; }
-html{ scroll-behavior: smooth; }
-
-body{
-  margin: 0;
-  font-family: var(--font-sans);
-  color: var(--ink);
-  line-height: 1.55;
-  background: transparent;
-}
-
-a{ color: inherit; }
-img{ max-width: 100%; display:block; }
-svg{ width: 22px; height: 22px; }
-
-.container{
-  width: min(var(--container), calc(100% - 40px));
-  margin-inline: auto;
-}
-
-.no-scroll{ overflow: hidden; }
-
-.skip-link{
-  position: absolute;
-  left: -999px;
-  top: 12px;
-  background: #fff;
-  color: #000;
-  padding: 10px 14px;
-  border-radius: 10px;
-  z-index: 9999;
-}
-.skip-link:focus{ left: 12px; }
-
-/* Header */
-.site-header{
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  backdrop-filter: blur(12px);
-  background: rgba(246,241,234,.78);
-  border-bottom: 1px solid rgba(230,221,209,.85);
-}
-.header-inner{
-  display:flex;
-  align-items:center;
-  justify-content: space-between;
-  padding: 12px 0;
-  gap: 12px;
-}
-
-/* Brand */
-.brand{
-  display:flex;
-  align-items:center;
-  gap: 12px;
-  text-decoration: none;
-  min-width: 220px;
-}
-
-/* ✅ logo circle supports image */
-.brand-mark{
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  overflow: hidden;
-  border: 1px solid rgba(222,211,196,.9);
-  box-shadow: 0 10px 24px rgba(31,29,26,.08);
-  background:
-    radial-gradient(circle at 30% 30%, rgba(200,165,123,.95), rgba(200,165,123,.18) 55%, transparent 60%),
-    radial-gradient(circle at 70% 70%, rgba(127,174,160,.55), transparent 55%),
-    radial-gradient(circle at 70% 20%, rgba(230,193,177,.55), transparent 58%);
-  display: grid;
-  place-items: center;
-}
-.brand-mark img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display:block;
-}
-
-.brand-text{
-  display:flex;
-  flex-direction: column;
-  line-height: 1.15;
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(222,211,196,.55);
-  background: rgba(255,255,255,.28);
-}
-
-.brand-name{ font-family: var(--font-serif); font-weight: 700; letter-spacing: .4px; }
-.brand-sub{ font-size: 12px; color: rgba(31,29,26,.72); margin-top: 2px; }
-
-/* Nav */
-.nav{
-  display:none;
-  gap: 8px;
-  align-items:center;
-}
-.nav a{
-  text-decoration:none;
-  font-size:14px;
-  color: rgba(31,29,26,.78);
-  padding: 10px 10px;
-  border-radius: 12px;
-  transition: background .2s ease, color .2s ease;
-}
-.nav a:hover{
-  background: rgba(200,165,123,.12);
-  color: var(--ink);
-}
-
-/* Mobile toggle */
-.nav-toggle{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  border: 1px solid rgba(222,211,196,.95);
-  background: rgba(255,255,255,.65);
-  cursor: pointer;
-  box-shadow: 0 10px 24px rgba(31,29,26,.06);
-}
-.nav-toggle-line{
-  display:block;
-  width: 18px;
-  height: 2px;
-  background: rgba(31,29,26,.78);
-  border-radius: 99px;
-  margin: 2px 0;
-}
-
-/* Mobile nav panel */
-.mobile-nav{
-  position: fixed;
-  inset: 0;
-  background: rgba(31,29,26,.42);
-  backdrop-filter: blur(6px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .18s ease;
-}
-.mobile-nav.is-open{
-  opacity: 1;
-  pointer-events: auto;
-}
-.mobile-nav-inner{
-  width: min(520px, calc(100% - 24px));
-  margin: 84px auto 0;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(222,211,196,.95);
-  background:
-    radial-gradient(900px 380px at 15% 0%, rgba(230,193,177,.20), transparent 60%),
-    radial-gradient(780px 420px at 95% 80%, rgba(127,174,160,.16), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.72));
-  box-shadow: 0 22px 70px rgba(31,29,26,.18);
-  padding: 16px;
-  display:grid;
-  gap: 10px;
-}
-.mobile-nav-inner a{
-  text-decoration: none;
-  padding: 12px 12px;
-  border-radius: 14px;
-  border: 1px solid rgba(222,211,196,.85);
-  background: rgba(255,255,255,.70);
-  color: rgba(31,29,26,.86);
-  font-weight: 700;
-}
-.mobile-nav-inner a:hover{
-  background: rgba(200,165,123,.10);
-  border-color: rgba(200,165,123,.55);
-}
-
-/* Sections */
-.section{
-  padding: var(--space-m) 0;
-}
-.section--soft{
-  background: transparent;
-  border-top: 0;
-  border-bottom: 0;
-}
-
-.section-head{
-  max-width: 760px;
-  margin-bottom: var(--space-5);
-}
-
-.h1{
-  font-family: var(--font-serif);
-  font-size: var(--h1);
-  line-height: 1.06;
-  margin: 0 0 var(--space-3);
-  letter-spacing: -0.8px;
-}
-
-.h2{
-  font-family: var(--font-serif);
-  font-size: var(--h2);
-  line-height: 1.15;
-  margin: 0 0 var(--space-2);
-  letter-spacing: -0.4px;
-}
-
-.h3{
-  font-size: var(--h3);
-  margin: 0 0 10px;
-  letter-spacing: -0.1px;
-}
-
-.lead{
-  font-size: var(--lead);
-  color: rgba(31,29,26,.84);
-  margin: 0 0 var(--space-4);
-  line-height: 1.7;
-}
-
-.sub{
-  margin: 0;
-  color: rgba(31,29,26,.78);
-  font-size: 16px;
-  line-height: 1.7;
-}
-
-.p{
-  margin: 0;
-  color: rgba(31,29,26,.78);
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-.eyebrow{
-  margin: 0 0 var(--space-2);
-  color: rgba(200,165,123,.98);
-  font-weight: 800;
-  letter-spacing: .8px;
-  text-transform: uppercase;
-  font-size: 12px;
-}
-
-/* Buttons */
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap: 10px;
-  padding: 13px 18px;
-  border-radius: 999px;
-  text-decoration:none;
-  border: 1px solid transparent;
-  font-weight: 740;
-  letter-spacing: .1px;
-  cursor:pointer;
-  user-select:none;
-
-  transition: transform .18s ease, box-shadow .25s ease, background .2s ease, border-color .2s ease, color .2s ease;
-}
-.btn:hover{ transform: translateY(-2px); }
-.btn:active{ transform: translateY(1px); }
-
-.btn--primary{
-  background: rgba(200,165,123,.96);
-  color: #231c12;
-  border-color: rgba(200,165,123,.60);
-  box-shadow: 0 14px 34px rgba(200,165,123,.20);
-}
-.btn--primary:hover{ background: rgba(200,165,123,1); }
-
-.btn--outline{
-  background: rgba(255,255,255,.72);
-  border-color: rgba(222,211,196,.95);
-  color: rgba(31,29,26,.92);
-}
-.btn--outline:hover{
-  background: rgba(255,255,255,.95);
-  border-color: rgba(200,165,123,.55);
-}
-
-.btn--sm{
-  padding: 10px 14px;
-  font-size: 13px;
-}
-
-/* HERO */
-.hero{ padding-top: var(--space-m-hero); }
-.hero-grid{
-  display:grid;
-  gap: var(--space-6);
-  align-items:center;
-}
-.hero-copy{ max-width: 640px; }
-.hero-cta{
-  display:flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: var(--space-4);
-}
-
-.trust-row{
-  display:flex;
-  flex-wrap: wrap;
-  gap: 10px 16px;
-  padding-top: 6px;
-}
-.trust{
-  display:flex;
-  align-items:center;
-  gap: 10px;
-  font-size: 13px;
-  color: rgba(31,29,26,.70);
-}
-.dot{
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: rgba(200,165,123,.95);
-  box-shadow: 0 0 0 6px rgba(200,165,123,.16);
-}
-.dot--soft{
-  box-shadow: 0 0 0 6px rgba(127,174,160,.12);
-  background: rgba(127,174,160,.65);
-}
-
-.hero-visual{ display:grid; gap: 14px; }
-
-.visual-card{
-  position: relative;
-  background:
-    radial-gradient(800px 260px at 15% 10%, rgba(230,193,177,.18), transparent 60%),
-    radial-gradient(900px 300px at 95% 85%, rgba(127,174,160,.14), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.84), rgba(255,255,255,.60));
-  border: 1px solid rgba(222,211,196,.95);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-  padding: 18px;
-  overflow: hidden;
-}
-
-.visual-card-top{ display:flex; flex-wrap: wrap; gap: 10px; }
-.pill{
-  font-size: 12px;
-  color: rgba(31,29,26,.78);
-  background: rgba(255,255,255,.84);
-  border: 1px solid rgba(222,211,196,.95);
-  padding: 8px 10px;
-  border-radius: 999px;
-}
-.visual-card-mid{
-  display:grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  margin: 18px 0;
-}
-.metric{
-  padding: 14px;
-  border-radius: 16px;
-  background: rgba(255,255,255,.76);
-  border: 1px solid rgba(222,211,196,.95);
-}
-.metric-label{
-  display:block;
-  font-size: 12px;
-  color: rgba(31,29,26,.62);
-  margin-bottom: 6px;
-}
-.metric-value{
-  font-weight: 780;
-  letter-spacing: .1px;
-  color: rgba(31,29,26,.92);
-}
-
-.visual-card-bottom{ display:grid; gap: 10px; }
-.badge{
-  display:flex;
-  align-items:center;
-  gap: 10px;
-  padding: 12px 14px;
-  border-radius: 16px;
-  background: rgba(255,255,255,.74);
-  border: 1px solid rgba(222,211,196,.95);
-}
-.badge-icon{
-  width: 22px;
-  height: 22px;
-  border-radius: 999px;
-  display:inline-grid;
-  place-items:center;
-  background: rgba(200,165,123,.18);
-  border: 1px solid rgba(200,165,123,.30);
-  color: rgba(31,29,26,.88);
-  font-weight: 900;
-  font-size: 12px;
-}
-.badge-text{
-  color: rgba(31,29,26,.80);
-  font-size: 13px;
-}
-
-/* grids / cards */
-.cards-grid{ display:grid; gap: 14px; }
-.card{
-  background: rgba(255,255,255,.84);
-  border: 1px solid rgba(222,211,196,.95);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-soft);
-  padding: 18px;
-}
-.icon{
-  width: 42px;
-  height: 42px;
-  border-radius: 16px;
-  display:grid;
-  place-items:center;
-  background: rgba(200,165,123,.16);
-  border: 1px solid rgba(200,165,123,.28);
-  color: rgba(31,29,26,.88);
-  margin-bottom: 12px;
-}
-.mini-list{
-  margin: 14px 0 0;
-  padding-left: 18px;
-  color: rgba(31,29,26,.78);
-  font-size: 14px;
-}
-.mini-list li{ margin: 6px 0; }
-
-/* =========================================================
-   Services — expensive cards (only this section)
-========================================================= */
-#services .card{
-  position: relative;
-  overflow: hidden;
-  border-radius: 24px;
-  border: 1px solid rgba(0,0,0,0.05);
-  background: rgba(255,255,255,.86);
-  transition: transform .38s cubic-bezier(0.165, 0.84, 0.44, 1),
-              box-shadow .38s cubic-bezier(0.165, 0.84, 0.44, 1),
-              border-color .25s ease;
-}
-#services .card:hover{
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-  border-color: rgba(200,165,123,.35);
-}
-#services .card::before{
-  content: "";
-  position: absolute;
-  right: 18px;
-  bottom: 10px;
-  font-family: var(--font-serif);
-  font-weight: 700;
-  font-size: 72px;
-  line-height: 1;
-  opacity: .06;
-  color: rgba(31,29,26,1);
-  pointer-events: none;
-}
-#services .card:nth-child(1)::before{ content:"01"; }
-#services .card:nth-child(2)::before{ content:"02"; }
-#services .card:nth-child(3)::before{ content:"03"; }
-
-/* simple sections used above */
-.help-grid{ display:grid; gap: 14px; }
-.help-card{
-  background: rgba(255,255,255,.84);
-  border: 1px solid rgba(222,211,196,.95);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-soft);
-  padding: 18px;
-}
-
-.space-grid{ display:grid; gap: 14px; }
-.space-main, .space-tile{
-  margin: 0;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(222,211,196,.95);
-  background: rgba(255,255,255,.70);
-  box-shadow: var(--shadow-soft);
-  overflow: hidden;
-}
-.space-main img, .space-tile img{ width: 100%; height: 100%; object-fit: cover; display:block; }
-.space-main{ min-height: 280px; }
-.space-side{ display:grid; gap: 14px; }
-.space-tile{ min-height: 160px; }
-.space-notes{
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(222,211,196,.95);
-  background: rgba(255,255,255,.70);
-  box-shadow: var(--shadow-soft);
-  padding: 16px;
-}
-.space-bullets{ margin: 0; padding: 0; list-style: none; display:grid; gap: 10px; color: rgba(31,29,26,.80); font-size: 14px; }
-.space-bullets li{ display:flex; align-items:center; gap: 10px; }
-
-.steps{ display:grid; gap: 12px; }
-.step{
-  display:grid;
-  grid-template-columns: auto 1fr;
-  gap: 14px;
-  padding: 16px;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(222,211,196,.95);
-  background: rgba(255,255,255,.66);
-}
-.step-num{
-  width: 44px;
-  height: 44px;
-  border-radius: 18px;
-  display:grid;
-  place-items:center;
-  font-weight: 880;
-  letter-spacing: .3px;
-  background: rgba(127,174,160,.16);
-  border: 1px solid rgba(127,174,160,.28);
-  color: rgba(31,29,26,.90);
-}
-
-.faq-grid{ display:grid; gap: 12px; }
-.faq{
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(222,211,196,.95);
-  background: rgba(255,255,255,.66);
-  overflow: hidden;
-}
-.faq summary{
-  list-style: none;
-  cursor: pointer;
-  padding: 16px 16px;
-  font-weight: 780;
-  color: rgba(31,29,26,.94);
-  position: relative;
-}
-.faq summary::-webkit-details-marker{ display:none; }
-.faq summary::after{
-  content:"+";
-  position:absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: rgba(200,165,123,.98);
-  font-weight: 900;
-}
-.faq[open] summary::after{ content:"–"; }
-.faq-body{ padding: 0 16px 16px; border-top: 1px solid rgba(222,211,196,.75); }
-
-.contact-grid{ display:grid; gap: 14px; }
-.contact-card, .map-card{
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(222,211,196,.95);
-  background: rgba(255,255,255,.84);
-  box-shadow: var(--shadow-soft);
-}
-.contact-card{ padding: 18px; }
-.map-card{ overflow:hidden; min-height: 320px; }
-.map-card iframe{ width: 100%; height: 100%; min-height: 320px; border: 0; display:block; filter: saturate(0.95) contrast(1.02); }
-
-.contact-cover{
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid rgba(222,211,196,.95);
-  background: rgba(255,255,255,.60);
-  box-shadow: 0 14px 34px rgba(31,29,26,.08);
-  margin-bottom: 14px;
-  height: 180px;
-}
-.contact-cover img{ width: 100%; height: 100%; object-fit: cover; display:block; }
-
-.contact-item{
-  display:grid;
-  gap: 6px;
-  padding: 12px 0;
-  border-top: 1px solid rgba(222,211,196,.75);
-}
-.contact-item:first-of-type{ border-top: 0; padding-top: 6px; }
-.contact-label{
-  color: rgba(31,29,26,.64);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: .7px;
-}
-.contact-value{ color: rgba(31,29,26,.92); font-size: 15px; }
-
-.link{ text-decoration: none; border-bottom: 1px solid rgba(222,211,196,.95); width: fit-content; }
-.link:hover{ border-bottom-color: rgba(200,165,123,.85); }
-
-.divider{ height: 1px; background: rgba(222,211,196,.75); margin: 16px 0; }
-
-.contact-form{ display:grid; gap: 12px; margin-top: 10px; }
-.field{ display:grid; gap: 6px; }
-.field-label{
-  font-size: 12px;
-  color: rgba(31,29,26,.72);
-  text-transform: uppercase;
-  letter-spacing: .7px;
-}
-.input, .textarea{
-  width: 100%;
-  border-radius: 16px;
-  border: 1px solid rgba(222,211,196,.95);
-  background: rgba(255,255,255,.82);
-  padding: 12px 12px;
-  font: inherit;
-  color: rgba(31,29,26,.92);
-  outline: none;
-}
-.input:focus, .textarea:focus{
-  border-color: rgba(200,165,123,.70);
-  box-shadow: 0 0 0 6px rgba(200,165,123,.16);
-}
-.textarea{ resize: vertical; min-height: 120px; }
-
-.form-actions{ display:flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
-
-.footer{
-  margin-top: var(--space-6);
-  padding: 26px 0;
-  border-top: 1px solid rgba(230,221,209,.85);
-  background: transparent;
-}
-.footer-inner{
-  display:flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.fine{
-  margin: 0;
-  font-size: 12px;
-  color: rgba(31,29,26,.66);
-}
-
-/* Responsive */
-@media (min-width: 860px){
-  .nav{ display:flex; }
-  .nav-toggle{ display:none; }
-  .mobile-nav{ display:none; }
-
-  .section{ padding: var(--space-7) 0; }
-  .hero{ padding-top: calc(var(--space-7) - 20px); }
-
-  .hero-grid{ grid-template-columns: 1.05fr .95fr; }
-  .visual-card-mid{ grid-template-columns: 1fr 1fr; }
-
-  .cards-grid{ grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .faq-grid{ grid-template-columns: 1fr 1fr; gap: 14px; }
-
-  .contact-grid{
-    grid-template-columns: .95fr 1.05fr;
-    gap: 16px;
-    align-items: stretch;
-  }
-  .help-grid{ grid-template-columns: 1fr 1fr; gap: 16px; }
-
-  .space-grid{
-    grid-template-columns: 1.15fr .85fr;
-    gap: 16px;
-    align-items: stretch;
-  }
-  .space-main{ min-height: 420px; }
-  .space-tile{ min-height: 190px; }
-  .contact-cover{ height: 210px; }
-
-  .footer-inner{
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
-
-@media (prefers-reduced-motion: reduce){
-  *{ scroll-behavior: auto !important; transition: none !important; }
-  #services .card, #services .card:hover{ transform: none !important; }
-}
+<!-- index.html -->
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ψυχολόγος στη Ρόδο — Συμβουλευτική • Παιγνιοθεραπεία • ABA</title>
+  <meta name="description" content="Ψυχολογική υποστήριξη στη Ρόδο. Συμβουλευτική, Παιγνιοθεραπεία και Θεραπεία Συμπεριφοράς (ABA). Κλείστε ραντεβού." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css?v=1002" />
+</head>
+
+<body id="top">
+  <a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
+
+  <!-- Header / Nav -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Αρχική">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="assets/logo.png" alt="" loading="lazy">
+        </span>
+
+        <!-- ✅ ΧΩΡΙΣ πλαίσιο πλέον -->
+        <span class="brand-text">
+          <span class="brand-name">Νικολέτα Πλατή</span>
+          <span class="brand-sub">Ψυχολόγος • Ρόδος</span>
+        </span>
+      </a>
+
+      <!-- Mobile toggle -->
+      <button class="nav-toggle" type="button" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="siteNav">
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+      </button>
+
+      <!-- Desktop nav -->
+      <nav class="nav" aria-label="Κύρια πλοήγηση">
+        <a href="#services">Υπηρεσίες</a>
+        <a href="#help">Πώς βοηθάω</a>
+        <a href="#space">Ο χώρος</a>
+        <a href="#process">Διαδικασία</a>
+        <a href="#faq">Συχνές ερωτήσεις</a>
+        <a href="#contact" class="btn btn--sm btn--outline">Επικοινωνία</a>
+      </nav>
+    </div>
+
+    <!-- Mobile nav panel -->
+    <div class="mobile-nav" id="siteNav" aria-hidden="true">
+      <div class="mobile-nav-inner">
+        <a href="#top">Αρχική</a>
+        <a href="#services">Υπηρεσίες</a>
+        <a href="#help">Πώς βοηθάω</a>
+        <a href="#space">Ο χώρος</a>
+        <a href="#process">Διαδικασία</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="btn btn--primary">Προγραμματισμός συνεδρίας</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="section hero" aria-label="Hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Ψυχολογική υποστήριξη στη Ρόδο</p>
+          <h1 class="h1">Ασφαλής χώρος για ζωή, φροντίδα και επανεκκίνηση.</h1>
+          <p class="lead">Συμβουλευτική ενηλίκων, παιγνιοθεραπεία και θεραπεία συμπεριφοράς (ABA). Μεθοδικά, ανθρώπινα, χωρίς υπερβολές.</p>
+
+          <div class="hero-cta">
+            <a class="btn btn--primary" href="#contact">Προγραμματισμός συνεδρίας</a>
+            <a class="btn btn--outline" href="#services">Δείτε υπηρεσίες</a>
+          </div>
+
+          <div class="trust-row" aria-label="Δείκτες εμπιστοσύνης">
+            <div class="trust"><span class="dot"></span> Εμπιστευτικότητα</div>
+            <div class="trust"><span class="dot dot--soft"></span> Σαφής διαδικασία</div>
+            <div class="trust"><span class="dot"></span> Στόχοι & πρόοδος</div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="visual-card">
+            <div class="visual-card-top">
+              <span class="pill">Συνεδρίες δια ζώσης</span>
+              <span class="pill">Online όπου χρειάζεται</span>
+            </div>
+
+            <div class="visual-card-mid">
+              <div class="metric">
+                <span class="metric-label">Διάρκεια</span>
+                <span class="metric-value">50′</span>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Ραντεβού</span>
+                <span class="metric-value">1–2 / εβδομάδα</span>
+              </div>
+            </div>
+
+            <div class="visual-card-bottom">
+              <div class="badge">
+                <span class="badge-icon" aria-hidden="true">✓</span>
+                <span class="badge-text">Καθαρή καθοδήγηση, βήμα-βήμα.</span>
+              </div>
+              <div class="badge">
+                <span class="badge-icon" aria-hidden="true">✓</span>
+                <span class="badge-text">Χωρίς “θεατρικές” υποσχέσεις.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section section--soft" id="services" aria-label="Υπηρεσίες">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="h2">Υπηρεσίες</h2>
+          <p class="sub">Επιλέγουμε μαζί τι χρειάζεται, με βάση το αίτημά σας.</p>
+        </div>
+
+        <div class="cards-grid">
+
+          <!-- ✅ Icon: Talk bubble -->
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M8 18l-3 3v-4a7 7 0 01-1-4c0-4.1 3.6-7 8-7s8 2.9 8 7-3.6 7-8 7H8z"
+                      stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M8.5 11h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M8.5 14h4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="h3">Συμβουλευτική ενηλίκων</h3>
+            <p class="p">Άγχος, σχέσεις, αλλαγές ζωής, αυτοεκτίμηση.</p>
+            <ul class="mini-list">
+              <li>Σαφής στόχος</li>
+              <li>Πλάνο συνεδριών</li>
+              <li>Εργαλεία για την καθημερινότητα</li>
+            </ul>
+          </article>
+
+          <!-- ✅ Icon: Puzzle -->
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M14 4h2a2 2 0 012 2v2a2 2 0 00-2 2 2 2 0 002 2v2a2 2 0 01-2 2h-2"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10 20H8a2 2 0 01-2-2v-2a2 2 0 002-2 2 2 0 00-2-2V8a2 2 0 012-2h2"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10 4h4v6a2 2 0 00-2-2 2 2 0 00-2 2V4z"
+                      stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M14 20h-4v-6a2 2 0 002 2 2 2 0 002-2v6z"
+                      stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="h3">Παιγνιοθεραπεία</h3>
+            <p class="p">Έκφραση, συναισθήματα, συμπεριφορά, όρια.</p>
+            <ul class="mini-list">
+              <li>Συνεργασία με γονείς</li>
+              <li>Σταθερότητα</li>
+              <li>Ασφαλές πλαίσιο</li>
+            </ul>
+          </article>
+
+          <!-- ✅ Icon: Target / goals -->
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 21a9 9 0 110-18 9 9 0 010 18z"
+                      stroke="currentColor" stroke-width="2"/>
+                <path d="M12 17a5 5 0 110-10 5 5 0 010 10z"
+                      stroke="currentColor" stroke-width="2"/>
+                <path d="M12 13a1 1 0 110-2 1 1 0 010 2z"
+                      fill="currentColor"/>
+                <path d="M19 5l-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M16 5h3v3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="h3">ABA / Συμπεριφορική υποστήριξη</h3>
+            <p class="p">Δομημένη παρέμβαση, στόχοι, πρακτική εφαρμογή.</p>
+            <ul class="mini-list">
+              <li>Μετρήσιμη πρόοδος</li>
+              <li>Ρουτίνα & δεξιότητες</li>
+              <li>Συνεργασία με οικογένεια</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- HELP -->
+    <section class="section" id="help" aria-label="Πώς βοηθάω">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="h2">Πώς μπορώ να σας βοηθήσω</h2>
+          <p class="sub">Ένα ξεκάθαρο πλαίσιο που σας κρατάει ασφαλείς.</p>
+        </div>
+
+        <div class="help-grid">
+          <div class="help-card">
+            <h3 class="h3">Σαφήνεια</h3>
+            <p class="p">Ορίζουμε τι είναι το “πρόβλημα” όπως το ζείτε εσείς.</p>
+          </div>
+          <div class="help-card">
+            <h3 class="h3">Στήριξη</h3>
+            <p class="p">Χτίζουμε εργαλεία, όχι εξάρτηση.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPACE -->
+    <section class="section section--soft" id="space" aria-label="Ο χώρος">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="h2">Ο χώρος</h2>
+          <p class="sub">Ήρεμο περιβάλλον, διακριτικότητα και άνεση.</p>
+        </div>
+
+        <div class="space-grid">
+          <figure class="space-main"><img src="assets/space-1.jpg" alt="Χώρος συνεδρίας" loading="lazy"></figure>
+          <div class="space-side">
+            <figure class="space-tile"><img src="assets/space-2.jpg" alt="Λεπτομέρεια χώρου" loading="lazy"></figure>
+            <figure class="space-tile"><img src="assets/space-3.jpg" alt="Γωνιά αναμονής" loading="lazy"></figure>
+            <div class="space-notes">
+              <ul class="space-bullets">
+                <li><span class="dot" aria-hidden="true"></span> Διακριτική είσοδος</li>
+                <li><span class="dot dot--soft" aria-hidden="true"></span> Ασφαλής ατμόσφαιρα</li>
+              </ul>
+              <div class="space-cta">
+                <a class="btn btn--outline" href="#contact">Ρωτήστε για διαθεσιμότητα</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section" id="process" aria-label="Διαδικασία">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="h2">Διαδικασία</h2>
+          <p class="sub">Τι να περιμένετε, από την πρώτη επαφή.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div><h3 class="h3">Σύντομη γνωριμία</h3><p class="p">Καταγράφουμε το αίτημα και στόχους.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div><h3 class="h3">Πλάνο συνεδριών</h3><p class="p">Συχνότητα, διάρκεια και προτεραιότητες.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div><h3 class="h3">Πρόοδος</h3><p class="p">Αξιολόγηση και προσαρμογή.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--soft" id="faq" aria-label="Συχνές ερωτήσεις">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="h2">Συχνές ερωτήσεις</h2>
+          <p class="sub">Σύντομες απαντήσεις σε ό,τι ακούγεται συχνά.</p>
+        </div>
+
+        <div class="faq-grid">
+          <details class="faq">
+            <summary>Πόσο διαρκεί μια συνεδρία;</summary>
+            <div class="faq-body"><p class="p">Συνήθως 50 λεπτά.</p></div>
+          </details>
+
+          <details class="faq">
+            <summary>Υπάρχει online;</summary>
+            <div class="faq-body"><p class="p">Ναι, όπου χρειάζεται.</p></div>
+          </details>
+
+          <!-- ✅ +2 νέα πεδία -->
+          <details class="faq">
+            <summary>Πόσες συνεδρίες θα χρειαστώ;</summary>
+            <div class="faq-body"><p class="p">Εξαρτάται από το αίτημα και τους στόχους. Συνήθως το ξεκαθαρίζουμε στις πρώτες συνεδρίες και το επαναξιολογούμε στην πορεία.</p></div>
+          </details>
+
+          <details class="faq">
+            <summary>Τι γίνεται αν χρειαστεί να ακυρώσω;</summary>
+            <div class="faq-body"><p class="p">Αν υπάρξει ανάγκη, ενημερώνετε όσο πιο έγκαιρα γίνεται ώστε να βρούμε άλλη διαθέσιμη ώρα.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact" aria-label="Επικοινωνία">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="h2">Επικοινωνία</h2>
+          <p class="sub">Στείλτε μήνυμα και θα απαντήσω σύντομα.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-cover">
+              <img src="assets/contact-cover.jpg" alt="Χώρος" loading="lazy">
+            </div>
+
+            <div class="contact-item">
+              <span class="contact-label">Τηλέφωνο</span>
+              <a class="link contact-value" href="tel:+30XXXXXXXXXX">+30 XXXXXXXXXX</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">Email</span>
+              <a class="link contact-value" href="mailto:hello@example.com">hello@example.com</a>
+            </div>
+
+            <div class="divider"></div>
+
+            <form class="contact-form">
+              <div class="field">
+                <label class="field-label" for="name">Ονοματεπώνυμο</label>
+                <input class="input" id="name" name="name" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label class="field-label" for="msg">Μήνυμα</label>
+                <textarea class="textarea" id="msg" name="message" required></textarea>
+              </div>
+              <div class="form-actions">
+                <button class="btn btn--primary" type="submit">Αποστολή</button>
+                <a class="btn btn--outline" href="#services">Υπηρεσίες</a>
+              </div>
+            </form>
+          </div>
+
+          <div class="map-card" aria-label="Χάρτης">
+            <iframe title="Χάρτης" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Rhodes&output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p class="fine">© <span id="year"></span> Νικολέτα Πλατή</p>
+        <!-- ✅ έβγαλα το "Πάνω" από εδώ -->
+      </div>
+    </footer>
+  </main>
+
+  <!-- ✅ Back to top button -->
+  <button class="to-top" type="button" aria-label="Πάνω" title="Πάνω">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 5l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 5l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <script>
+    // year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // mobile nav toggle
+    const toggle = document.querySelector(".nav-toggle");
+    const mobileNav = document.querySelector(".mobile-nav");
+    const body = document.body;
+
+    function closeMenu(){
+      toggle.setAttribute("aria-expanded", "false");
+      mobileNav.classList.remove("is-open");
+      mobileNav.setAttribute("aria-hidden", "true");
+      body.classList.remove("no-scroll");
+    }
+
+    function openMenu(){
+      toggle.setAttribute("aria-expanded", "true");
+      mobileNav.classList.add("is-open");
+      mobileNav.setAttribute("aria-hidden", "false");
+      body.classList.add("no-scroll");
+    }
+
+    toggle.addEventListener("click", () => {
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      expanded ? closeMenu() : openMenu();
+    });
+
+    mobileNav.addEventListener("click", (e) => {
+      if(e.target === mobileNav) closeMenu();
+    });
+
+    mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+    window.addEventListener("keydown", (e) => { if(e.key === "Escape") closeMenu(); });
+
+    // tiny delay on anchor scroll (subtle)
+    (function(){
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (prefersReduced) return;
+
+      const DELAY_MS = 70;
+      const selector = 'a[href^="#"]:not([href="#"])';
+
+      document.querySelectorAll(selector).forEach(a => {
+        a.addEventListener("click", (e) => {
+          const href = a.getAttribute("href");
+          if (!href || href.length < 2) return;
+
+          const id = href.slice(1);
+          const target = document.getElementById(id);
+          if (!target) return;
+
+          e.preventDefault();
+          history.pushState(null, "", href);
+
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, DELAY_MS);
+        });
+      });
+    })();
+
+    // ✅ Back to top button behavior
+    (function(){
+      const btn = document.querySelector(".to-top");
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function onScroll(){
+        const show = window.scrollY > 420;
+        btn.classList.toggle("is-visible", show);
+      }
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      btn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
+      });
+    })();
+  </script>
+</body>
+</html>
