@@ -1,446 +1,790 @@
-<!-- index.html -->
-<!doctype html>
-<html lang="el">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ψυχολόγος στη Ρόδο — Συμβουλευτική • Παιγνιοθεραπεία • ABA</title>
-  <meta name="description" content="Ψυχολογική υποστήριξη στη Ρόδο. Συμβουλευτική, Παιγνιοθεραπεία και Θεραπεία Συμπεριφοράς (ABA). Κλείστε ραντεβού." />
+:root{
+  --bg-0:#f6f2ff;
+  --bg-1:#eef7ff;
+  --ink:#12131a;
+  --muted:rgba(18,19,26,.68);
+  --soft:rgba(18,19,26,.08);
+  --card:rgba(255,255,255,.62);
+  --card-2:rgba(255,255,255,.78);
+  --stroke:rgba(18,19,26,.12);
+  --shadow: 0 26px 80px rgba(18,19,26,.12);
+  --shadow-2: 0 14px 40px rgba(18,19,26,.10);
+  --radius:22px;
+  --radius-2:16px;
+  --max:1120px;
+  --accent:#2f6cff;
+  --accent-2:#8b5cf6;
+  --ok:#1aa36f;
+  --warn:#ff7a59;
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  font-family:var(--font);
+  color:var(--ink);
+  background:
+    radial-gradient(900px 520px at 18% 12%, rgba(139,92,246,.14), transparent 60%),
+    radial-gradient(900px 520px at 82% 22%, rgba(47,108,255,.12), transparent 60%),
+    linear-gradient(180deg, var(--bg-0), var(--bg-1));
+  min-height:100vh;
+}
 
-  <link rel="stylesheet" href="styles.css?v=1002" />
-</head>
+a{ color:inherit; text-decoration:none; }
+.wrap{ width:min(var(--max), calc(100% - 40px)); margin:0 auto; }
 
-<body id="top">
-  <a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
+/* Top spacing */
+.page{
+  padding:34px 0 84px;
+}
 
-  <!-- Header / Nav -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="Αρχική">
-        <span class="brand-mark" aria-hidden="true">
-          <img src="assets/logo.png" alt="" loading="lazy">
-        </span>
+/* Hero card */
+.hero-card{
+  position:relative;
+  border-radius:30px;
+  background: linear-gradient(180deg, rgba(255,255,255,.58), rgba(255,255,255,.38));
+  box-shadow: var(--shadow);
+  border:1px solid rgba(255,255,255,.65);
+  overflow:hidden;
+  isolation:isolate;
+}
+.hero-card::before{
+  content:"";
+  position:absolute;
+  inset:-120px -180px auto auto;
+  width:520px;
+  height:520px;
+  border-radius:999px;
+  background: radial-gradient(circle at 40% 40%, rgba(139,92,246,.18), transparent 62%),
+            radial-gradient(circle at 60% 60%, rgba(47,108,255,.14), transparent 62%);
+  filter: blur(2px);
+  z-index:0;
+}
+.hero-card::after{
+  content:"";
+  position:absolute;
+  inset:auto -220px -220px auto;
+  width:520px;
+  height:520px;
+  border-radius:999px;
+  background: radial-gradient(circle at 40% 40%, rgba(47,108,255,.16), transparent 62%),
+            radial-gradient(circle at 60% 60%, rgba(139,92,246,.12), transparent 62%);
+  z-index:0;
+}
 
-        <!-- ✅ ΧΩΡΙΣ πλαίσιο πλέον -->
-        <span class="brand-text">
-          <span class="brand-name">Νικολέτα Πλατή</span>
-          <span class="brand-sub">Ψυχολόγος • Ρόδος</span>
-        </span>
-      </a>
+/* Noise overlay */
+.noise{
+  pointer-events:none;
+  position:absolute;
+  inset:0;
+  opacity:.12;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+  z-index:1;
+}
 
-      <!-- Mobile toggle -->
-      <button class="nav-toggle" type="button" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="siteNav">
-        <span class="nav-toggle-line"></span>
-        <span class="nav-toggle-line"></span>
-      </button>
+/* Nav inside card */
+.card-nav{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:18px 18px 12px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width: 240px;
+}
+.dotgrid{
+  width:34px; height:34px;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:4px;
+  padding:8px;
+  border-radius:12px;
+  background:rgba(255,255,255,.62);
+  border:1px solid rgba(18,19,26,.10);
+  box-shadow: var(--shadow-2);
+}
+.dotgrid span{
+  width:4px; height:4px;
+  border-radius:2px;
+  background:rgba(18,19,26,.65);
+  display:block;
+  margin:auto;
+}
+.brand-name{
+  display:flex;
+  flex-direction:column;
+  line-height:1.1;
+}
+.brand-name strong{
+  font-size:13px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.brand-name small{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:3px;
+}
 
-      <!-- Desktop nav -->
-      <nav class="nav" aria-label="Κύρια πλοήγηση">
-        <a href="#services">Υπηρεσίες</a>
-        <a href="#help">Πώς βοηθάω</a>
-        <a href="#space">Ο χώρος</a>
-        <a href="#process">Διαδικασία</a>
-        <a href="#faq">Συχνές ερωτήσεις</a>
-        <a href="#contact" class="btn btn--sm btn--outline">Επικοινωνία</a>
-      </nav>
-    </div>
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 12px;
+  border-radius:999px;
+  background: rgba(255,255,255,.72);
+  border:1px solid rgba(18,19,26,.10);
+  box-shadow: var(--shadow-2);
+  font-size:13px;
+  color:rgba(18,19,26,.82);
+  white-space:nowrap;
+}
+.pill .pin{
+  width:8px; height:8px; border-radius:99px;
+  background:linear-gradient(180deg, rgba(47,108,255,.9), rgba(139,92,246,.9));
+  box-shadow:0 0 0 3px rgba(47,108,255,.12);
+}
 
-    <!-- Mobile nav panel -->
-    <div class="mobile-nav" id="siteNav" aria-hidden="true">
-      <div class="mobile-nav-inner">
-        <a href="#top">Αρχική</a>
-        <a href="#services">Υπηρεσίες</a>
-        <a href="#help">Πώς βοηθάω</a>
-        <a href="#space">Ο χώρος</a>
-        <a href="#process">Διαδικασία</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact" class="btn btn--primary">Προγραμματισμός συνεδρίας</a>
-      </div>
-    </div>
-  </header>
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:12px 14px;
+  border-radius:999px;
+  border:1px solid rgba(18,19,26,.12);
+  background: rgba(255,255,255,.72);
+  box-shadow: var(--shadow-2);
+  font-weight:600;
+  font-size:13px;
+  cursor:pointer;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+  user-select:none;
+}
+.btn:hover{ transform: translateY(-1px); box-shadow: 0 18px 46px rgba(18,19,26,.14); }
+.btn.primary{
+  background: linear-gradient(180deg, rgba(47,108,255,.96), rgba(139,92,246,.92));
+  border-color: rgba(255,255,255,.34);
+  color:white;
+}
+.btn.primary:hover{ box-shadow: 0 24px 60px rgba(47,108,255,.22); }
 
-  <main id="main">
+/* Mobile menu */
+.hamburger{
+  width:44px; height:44px;
+  border-radius:14px;
+  border:1px solid rgba(18,19,26,.10);
+  background: rgba(255,255,255,.62);
+  box-shadow: var(--shadow-2);
+  display:none;
+  position:relative;
+  cursor:pointer;
+}
+.hamburger span{
+  position:absolute;
+  left:12px; right:12px;
+  height:2px;
+  background: rgba(18,19,26,.78);
+  border-radius:2px;
+  transition: transform .18s ease, top .18s ease, opacity .18s ease;
+}
+.hamburger span:nth-child(1){ top:15px; }
+.hamburger span:nth-child(2){ top:21px; opacity:.9; }
+.hamburger span:nth-child(3){ top:27px; }
 
-    <!-- HERO -->
-    <section class="section hero" aria-label="Hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">Ψυχολογική υποστήριξη στη Ρόδο</p>
-          <h1 class="h1">Ασφαλής χώρος για ζωή, φροντίδα και επανεκκίνηση.</h1>
-          <p class="lead">Συμβουλευτική ενηλίκων, παιγνιοθεραπεία και θεραπεία συμπεριφοράς (ABA). Μεθοδικά, ανθρώπινα, χωρίς υπερβολές.</p>
+.menu{
+  display:flex;
+  gap:16px;
+  align-items:center;
+  padding:0 18px 12px;
+  position:relative;
+  z-index:2;
+}
+.menu a{
+  font-size:13px;
+  color:rgba(18,19,26,.78);
+  padding:10px 10px;
+  border-radius:999px;
+  transition: background .15s ease;
+}
+.menu a:hover{ background: rgba(255,255,255,.60); }
 
-          <div class="hero-cta">
-            <a class="btn btn--primary" href="#contact">Προγραμματισμός συνεδρίας</a>
-            <a class="btn btn--outline" href="#services">Δείτε υπηρεσίες</a>
-          </div>
+.mobileMenu{
+  display:none;
+  position:relative;
+  z-index:3;
+  padding:10px 18px 16px;
+}
+.mobileMenu .panel{
+  border-radius:18px;
+  background: rgba(255,255,255,.80);
+  border:1px solid rgba(18,19,26,.10);
+  box-shadow: var(--shadow-2);
+  padding:10px;
+  display:grid;
+  gap:6px;
+}
+.mobileMenu a{
+  padding:12px 12px;
+  border-radius:14px;
+  font-size:14px;
+  color:rgba(18,19,26,.84);
+}
+.mobileMenu a:hover{ background: rgba(18,19,26,.06); }
 
-          <div class="trust-row" aria-label="Δείκτες εμπιστοσύνης">
-            <div class="trust"><span class="dot"></span> Εμπιστευτικότητα</div>
-            <div class="trust"><span class="dot dot--soft"></span> Σαφής διαδικασία</div>
-            <div class="trust"><span class="dot"></span> Στόχοι & πρόοδος</div>
-          </div>
-        </div>
+/* Hero layout */
+.hero{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap:22px;
+  padding:26px 22px 22px;
+  align-items:stretch;
+}
 
-        <div class="hero-visual">
-          <div class="visual-card">
-            <div class="visual-card-top">
-              <span class="pill">Συνεδρίες δια ζώσης</span>
-              <span class="pill">Online όπου χρειάζεται</span>
-            </div>
+.hero-left{
+  padding:16px 10px 18px;
+}
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+  color:rgba(18,19,26,.74);
+  font-size:13px;
+}
+.kicker .chip{
+  padding:8px 10px;
+  border-radius:999px;
+  background: rgba(255,255,255,.70);
+  border:1px solid rgba(18,19,26,.10);
+  box-shadow: var(--shadow-2);
+  font-weight:600;
+}
+h1{
+  margin:0;
+  font-size: clamp(30px, 3.4vw, 48px);
+  letter-spacing:-.02em;
+  line-height:1.05;
+}
+.sub{
+  margin:14px 0 0;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.6;
+  max-width:52ch;
+}
+.cta-row{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+.micro{
+  margin-top:14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  color:rgba(18,19,26,.70);
+  font-size:13px;
+}
+.micro .tick{
+  width:18px; height:18px;
+  border-radius:99px;
+  background: rgba(26,163,111,.16);
+  display:grid; place-items:center;
+  border:1px solid rgba(26,163,111,.22);
+}
+.micro svg{ width:12px; height:12px; }
 
-            <div class="visual-card-mid">
-              <div class="metric">
-                <span class="metric-label">Διάρκεια</span>
-                <span class="metric-value">50′</span>
-              </div>
-              <div class="metric">
-                <span class="metric-label">Ραντεβού</span>
-                <span class="metric-value">1–2 / εβδομάδα</span>
-              </div>
-            </div>
+.hero-right{
+  position:relative;
+  border-radius:24px;
+  background: linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.46));
+  border:1px solid rgba(18,19,26,.10);
+  box-shadow: var(--shadow-2);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:420px;
+}
 
-            <div class="visual-card-bottom">
-              <div class="badge">
-                <span class="badge-icon" aria-hidden="true">✓</span>
-                <span class="badge-text">Καθαρή καθοδήγηση, βήμα-βήμα.</span>
-              </div>
-              <div class="badge">
-                <span class="badge-icon" aria-hidden="true">✓</span>
-                <span class="badge-text">Χωρίς “θεατρικές” υποσχέσεις.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+.visual{
+  position:relative;
+  height: 62%;
+  min-height:260px;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+}
+.visual::before{
+  content:"";
+  position:absolute;
+  inset:-40px;
+  background:
+    radial-gradient(220px 180px at 35% 40%, rgba(47,108,255,.22), transparent 62%),
+    radial-gradient(260px 220px at 68% 55%, rgba(139,92,246,.18), transparent 62%),
+    radial-gradient(220px 220px at 52% 20%, rgba(255,122,89,.12), transparent 64%);
+  filter: blur(1px);
+}
+.silhouette{
+  position:relative;
+  z-index:2;
+  width:min(320px, 86%);
+  aspect-ratio: 4 / 5;
+  border-radius:24px;
+  background:
+    linear-gradient(180deg, rgba(18,19,26,.06), rgba(18,19,26,.02)),
+    radial-gradient(140px 120px at 55% 40%, rgba(255,255,255,.65), rgba(255,255,255,.10));
+  border:1px solid rgba(18,19,26,.10);
+  box-shadow: 0 26px 70px rgba(18,19,26,.14);
+  overflow:hidden;
+}
+.silhouette .img{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(180px 140px at 55% 35%, rgba(255,255,255,.75), transparent 60%),
+    radial-gradient(240px 220px at 50% 70%, rgba(47,108,255,.12), transparent 62%),
+    linear-gradient(180deg, rgba(18,19,26,.06), rgba(18,19,26,.02));
+}
+.silhouette .label{
+  position:absolute;
+  left:14px;
+  top:14px;
+  padding:8px 10px;
+  border-radius:999px;
+  background: rgba(255,255,255,.78);
+  border:1px solid rgba(18,19,26,.10);
+  font-size:12px;
+  color:rgba(18,19,26,.78);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.pulse{
+  width:10px; height:10px;
+  border-radius:99px;
+  background: linear-gradient(180deg, rgba(26,163,111,.9), rgba(26,163,111,.62));
+  box-shadow: 0 0 0 6px rgba(26,163,111,.14);
+}
 
-    <!-- SERVICES -->
-    <section class="section section--soft" id="services" aria-label="Υπηρεσίες">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="h2">Υπηρεσίες</h2>
-          <p class="sub">Επιλέγουμε μαζί τι χρειάζεται, με βάση το αίτημά σας.</p>
-        </div>
+.side-info{
+  position:relative;
+  z-index:2;
+  padding:14px 16px 16px;
+  display:grid;
+  gap:10px;
+}
+.metrics{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+}
+.metric{
+  border-radius:16px;
+  background: rgba(255,255,255,.72);
+  border:1px solid rgba(18,19,26,.10);
+  padding:12px 12px;
+  box-shadow: var(--shadow-2);
+}
+.metric strong{
+  display:block;
+  font-size:14px;
+}
+.metric small{
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.35;
+}
 
-        <div class="cards-grid">
+.social-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:6px;
+}
+.social{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.iconbtn{
+  width:42px; height:42px;
+  border-radius:14px;
+  border:1px solid rgba(18,19,26,.10);
+  background: rgba(255,255,255,.74);
+  box-shadow: var(--shadow-2);
+  display:grid;
+  place-items:center;
+  transition: transform .15s ease;
+}
+.iconbtn:hover{ transform: translateY(-1px); }
+.iconbtn svg{ width:18px; height:18px; opacity:.86; }
 
-          <!-- ✅ Icon: Talk bubble -->
-          <article class="card">
-            <div class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M8 18l-3 3v-4a7 7 0 01-1-4c0-4.1 3.6-7 8-7s8 2.9 8 7-3.6 7-8 7H8z"
-                      stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M8.5 11h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M8.5 14h4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3 class="h3">Συμβουλευτική ενηλίκων</h3>
-            <p class="p">Άγχος, σχέσεις, αλλαγές ζωής, αυτοεκτίμηση.</p>
-            <ul class="mini-list">
-              <li>Σαφής στόχος</li>
-              <li>Πλάνο συνεδριών</li>
-              <li>Εργαλεία για την καθημερινότητα</li>
-            </ul>
-          </article>
+.tiny-cta{
+  font-size:13px;
+  color:rgba(18,19,26,.78);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-radius:999px;
+  background: rgba(255,255,255,.72);
+  border:1px solid rgba(18,19,26,.10);
+  box-shadow: var(--shadow-2);
+  white-space:nowrap;
+}
+.arrow{
+  width:18px; height:18px;
+  border-radius:99px;
+  display:grid; place-items:center;
+  background: rgba(47,108,255,.12);
+  border:1px solid rgba(47,108,255,.18);
+}
 
-          <!-- ✅ Icon: Puzzle -->
-          <article class="card">
-            <div class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M14 4h2a2 2 0 012 2v2a2 2 0 00-2 2 2 2 0 002 2v2a2 2 0 01-2 2h-2"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M10 20H8a2 2 0 01-2-2v-2a2 2 0 002-2 2 2 0 00-2-2V8a2 2 0 012-2h2"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M10 4h4v6a2 2 0 00-2-2 2 2 0 00-2 2V4z"
-                      stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M14 20h-4v-6a2 2 0 002 2 2 2 0 002-2v6z"
-                      stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3 class="h3">Παιγνιοθεραπεία</h3>
-            <p class="p">Έκφραση, συναισθήματα, συμπεριφορά, όρια.</p>
-            <ul class="mini-list">
-              <li>Συνεργασία με γονείς</li>
-              <li>Σταθερότητα</li>
-              <li>Ασφαλές πλαίσιο</li>
-            </ul>
-          </article>
+/* Below hero content */
+.below{
+  padding:18px 22px 22px;
+  position:relative;
+  z-index:2;
+}
+.strip{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:12px;
+  align-items:center;
+  border-radius:22px;
+  background: rgba(255,255,255,.58);
+  border:1px solid rgba(18,19,26,.10);
+  box-shadow: var(--shadow-2);
+  padding:14px 14px;
+}
+.strip p{
+  margin:0;
+  color:rgba(18,19,26,.74);
+  font-size:13px;
+  line-height:1.55;
+}
+.strip .badges{
+  display:flex;
+  gap:8px;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+}
+.badge{
+  padding:10px 12px;
+  border-radius:999px;
+  background: rgba(255,255,255,.74);
+  border:1px solid rgba(18,19,26,.10);
+  font-size:12px;
+  color:rgba(18,19,26,.76);
+  box-shadow: var(--shadow-2);
+}
 
-          <!-- ✅ Icon: Target / goals -->
-          <article class="card">
-            <div class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 21a9 9 0 110-18 9 9 0 010 18z"
-                      stroke="currentColor" stroke-width="2"/>
-                <path d="M12 17a5 5 0 110-10 5 5 0 010 10z"
-                      stroke="currentColor" stroke-width="2"/>
-                <path d="M12 13a1 1 0 110-2 1 1 0 010 2z"
-                      fill="currentColor"/>
-                <path d="M19 5l-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M16 5h3v3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3 class="h3">ABA / Συμπεριφορική υποστήριξη</h3>
-            <p class="p">Δομημένη παρέμβαση, στόχοι, πρακτική εφαρμογή.</p>
-            <ul class="mini-list">
-              <li>Μετρήσιμη πρόοδος</li>
-              <li>Ρουτίνα & δεξιότητες</li>
-              <li>Συνεργασία με οικογένεια</li>
-            </ul>
-          </article>
+/* Sections */
+section{
+  padding:54px 0;
+}
+.section-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:18px;
+}
+.section-head h2{
+  margin:0;
+  font-size:28px;
+  letter-spacing:-.02em;
+}
+.section-head p{
+  margin:0;
+  max-width:56ch;
+  color:var(--muted);
+  line-height:1.6;
+  font-size:15px;
+}
 
-        </div>
-      </div>
-    </section>
+.grid3{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:14px;
+}
+.card{
+  border-radius:22px;
+  background: rgba(255,255,255,.62);
+  border:1px solid rgba(18,19,26,.10);
+  box-shadow: var(--shadow-2);
+  padding:18px;
+}
+.card h3{
+  margin:0 0 10px;
+  font-size:18px;
+  letter-spacing:-.01em;
+}
+.card p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.65;
+  font-size:14px;
+}
+.list{
+  margin:12px 0 0;
+  padding:0;
+  list-style:none;
+  display:grid;
+  gap:10px;
+}
+.list li{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  color:rgba(18,19,26,.78);
+  font-size:14px;
+  line-height:1.5;
+}
+.list .dot{
+  width:20px; height:20px;
+  border-radius:8px;
+  background: rgba(47,108,255,.10);
+  border:1px solid rgba(47,108,255,.16);
+  display:grid;
+  place-items:center;
+  flex:0 0 20px;
+  margin-top:1px;
+}
+.list .dot svg{ width:12px; height:12px; }
 
-    <!-- HELP -->
-    <section class="section" id="help" aria-label="Πώς βοηθάω">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="h2">Πώς μπορώ να σας βοηθήσω</h2>
-          <p class="sub">Ένα ξεκάθαρο πλαίσιο που σας κρατάει ασφαλείς.</p>
-        </div>
+.two{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:14px;
+  align-items:stretch;
+}
 
-        <div class="help-grid">
-          <div class="help-card">
-            <h3 class="h3">Σαφήνεια</h3>
-            <p class="p">Ορίζουμε τι είναι το “πρόβλημα” όπως το ζείτε εσείς.</p>
-          </div>
-          <div class="help-card">
-            <h3 class="h3">Στήριξη</h3>
-            <p class="p">Χτίζουμε εργαλεία, όχι εξάρτηση.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+.quote{
+  border-radius:26px;
+  background: linear-gradient(180deg, rgba(255,255,255,.66), rgba(255,255,255,.52));
+  border:1px solid rgba(18,19,26,.10);
+  box-shadow: var(--shadow-2);
+  padding:22px;
+}
+.quote blockquote{
+  margin:0;
+  font-size:16px;
+  line-height:1.7;
+  color:rgba(18,19,26,.80);
+}
+.quote .who{
+  margin-top:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  color:var(--muted);
+  font-size:13px;
+}
 
-    <!-- SPACE -->
-    <section class="section section--soft" id="space" aria-label="Ο χώρος">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="h2">Ο χώρος</h2>
-          <p class="sub">Ήρεμο περιβάλλον, διακριτικότητα και άνεση.</p>
-        </div>
+/* Pricing */
+.pricing{
+  display:grid;
+  grid-template-columns: 1.05fr .95fr .95fr;
+  gap:14px;
+  align-items:stretch;
+}
+.price{
+  border-radius:26px;
+  background: rgba(255,255,255,.62);
+  border:1px solid rgba(18,19,26,.10);
+  box-shadow: var(--shadow-2);
+  padding:20px;
+  position:relative;
+  overflow:hidden;
+}
+.price.featured{
+  background: linear-gradient(180deg, rgba(47,108,255,.10), rgba(255,255,255,.60));
+  border-color: rgba(47,108,255,.18);
+}
+.price .tag{
+  position:absolute;
+  top:14px;
+  right:14px;
+  padding:9px 11px;
+  border-radius:999px;
+  background: rgba(255,255,255,.78);
+  border:1px solid rgba(18,19,26,.10);
+  box-shadow: var(--shadow-2);
+  font-size:12px;
+  color:rgba(18,19,26,.76);
+}
+.price h3{ margin:0 0 10px; }
+.amount{
+  font-size:28px;
+  font-weight:800;
+  letter-spacing:-.02em;
+  margin:0;
+}
+.amount small{
+  font-size:13px;
+  font-weight:600;
+  color:var(--muted);
+}
+.price .desc{
+  margin-top:10px;
+  color:var(--muted);
+  line-height:1.6;
+  font-size:14px;
+}
+.price .btn{ margin-top:14px; width:100%; }
 
-        <div class="space-grid">
-          <figure class="space-main"><img src="assets/space-1.jpg" alt="Χώρος συνεδρίας" loading="lazy"></figure>
-          <div class="space-side">
-            <figure class="space-tile"><img src="assets/space-2.jpg" alt="Λεπτομέρεια χώρου" loading="lazy"></figure>
-            <figure class="space-tile"><img src="assets/space-3.jpg" alt="Γωνιά αναμονής" loading="lazy"></figure>
-            <div class="space-notes">
-              <ul class="space-bullets">
-                <li><span class="dot" aria-hidden="true"></span> Διακριτική είσοδος</li>
-                <li><span class="dot dot--soft" aria-hidden="true"></span> Ασφαλής ατμόσφαιρα</li>
-              </ul>
-              <div class="space-cta">
-                <a class="btn btn--outline" href="#contact">Ρωτήστε για διαθεσιμότητα</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+.fine{
+  margin-top:12px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6;
+}
 
-    <!-- PROCESS -->
-    <section class="section" id="process" aria-label="Διαδικασία">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="h2">Διαδικασία</h2>
-          <p class="sub">Τι να περιμένετε, από την πρώτη επαφή.</p>
-        </div>
+/* FAQ */
+details{
+  border-radius:20px;
+  background: rgba(255,255,255,.62);
+  border:1px solid rgba(18,19,26,.10);
+  box-shadow: var(--shadow-2);
+  padding:14px 16px;
+}
+details + details{ margin-top:10px; }
+summary{
+  cursor:pointer;
+  font-weight:700;
+  color:rgba(18,19,26,.86);
+  list-style:none;
+}
+summary::-webkit-details-marker{ display:none; }
+details p{
+  margin:10px 0 0;
+  color:var(--muted);
+  line-height:1.7;
+  font-size:14px;
+}
 
-        <div class="steps">
-          <div class="step"><div class="step-num">1</div><div><h3 class="h3">Σύντομη γνωριμία</h3><p class="p">Καταγράφουμε το αίτημα και στόχους.</p></div></div>
-          <div class="step"><div class="step-num">2</div><div><h3 class="h3">Πλάνο συνεδριών</h3><p class="p">Συχνότητα, διάρκεια και προτεραιότητες.</p></div></div>
-          <div class="step"><div class="step-num">3</div><div><h3 class="h3">Πρόοδος</h3><p class="p">Αξιολόγηση και προσαρμογή.</p></div></div>
-        </div>
-      </div>
-    </section>
+/* Contact */
+.contact{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:14px;
+  align-items:stretch;
+}
+.form{
+  display:grid;
+  gap:10px;
+  margin-top:10px;
+}
+label{
+  font-size:13px;
+  color:rgba(18,19,26,.78);
+  font-weight:600;
+}
+input, select, textarea{
+  width:100%;
+  border-radius:16px;
+  border:1px solid rgba(18,19,26,.12);
+  background: rgba(255,255,255,.74);
+  padding:12px 12px;
+  font:inherit;
+  outline:none;
+  transition: box-shadow .15s ease, border-color .15s ease;
+}
+textarea{ min-height:110px; resize:vertical; }
+input:focus, select:focus, textarea:focus{
+  border-color: rgba(47,108,255,.32);
+  box-shadow: 0 0 0 6px rgba(47,108,255,.12);
+}
 
-    <!-- FAQ -->
-    <section class="section section--soft" id="faq" aria-label="Συχνές ερωτήσεις">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="h2">Συχνές ερωτήσεις</h2>
-          <p class="sub">Σύντομες απαντήσεις σε ό,τι ακούγεται συχνά.</p>
-        </div>
+/* Footer */
+footer{
+  padding:28px 0 40px;
+  color:rgba(18,19,26,.70);
+  font-size:13px;
+}
+.foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.foot a{ color:rgba(18,19,26,.78); }
 
-        <div class="faq-grid">
-          <details class="faq">
-            <summary>Πόσο διαρκεί μια συνεδρία;</summary>
-            <div class="faq-body"><p class="p">Συνήθως 50 λεπτά.</p></div>
-          </details>
+/* Modal */
+.modal{
+  position:fixed;
+  inset:0;
+  background: rgba(18,19,26,.46);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:50;
+}
+.modal[aria-hidden="false"]{ display:flex; }
+.modal .box{
+  width:min(560px, 100%);
+  border-radius:26px;
+  background: rgba(255,255,255,.88);
+  border:1px solid rgba(255,255,255,.55);
+  box-shadow: 0 36px 120px rgba(0,0,0,.22);
+  padding:18px;
+  position:relative;
+}
+.modal .box h3{ margin:6px 0 8px; }
+.modal .box p{ margin:0; color:var(--muted); line-height:1.7; }
+.modal .x{
+  position:absolute;
+  top:12px; right:12px;
+  width:44px; height:44px;
+  border-radius:14px;
+  border:1px solid rgba(18,19,26,.12);
+  background: rgba(255,255,255,.78);
+  cursor:pointer;
+  box-shadow: var(--shadow-2);
+}
 
-          <details class="faq">
-            <summary>Υπάρχει online;</summary>
-            <div class="faq-body"><p class="p">Ναι, όπου χρειάζεται.</p></div>
-          </details>
-
-          <!-- ✅ +2 νέα πεδία -->
-          <details class="faq">
-            <summary>Πόσες συνεδρίες θα χρειαστώ;</summary>
-            <div class="faq-body"><p class="p">Εξαρτάται από το αίτημα και τους στόχους. Συνήθως το ξεκαθαρίζουμε στις πρώτες συνεδρίες και το επαναξιολογούμε στην πορεία.</p></div>
-          </details>
-
-          <details class="faq">
-            <summary>Τι γίνεται αν χρειαστεί να ακυρώσω;</summary>
-            <div class="faq-body"><p class="p">Αν υπάρξει ανάγκη, ενημερώνετε όσο πιο έγκαιρα γίνεται ώστε να βρούμε άλλη διαθέσιμη ώρα.</p></div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact" aria-label="Επικοινωνία">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="h2">Επικοινωνία</h2>
-          <p class="sub">Στείλτε μήνυμα και θα απαντήσω σύντομα.</p>
-        </div>
-
-        <div class="contact-grid">
-          <div class="contact-card">
-            <div class="contact-cover">
-              <img src="assets/contact-cover.jpg" alt="Χώρος" loading="lazy">
-            </div>
-
-            <div class="contact-item">
-              <span class="contact-label">Τηλέφωνο</span>
-              <a class="link contact-value" href="tel:+30XXXXXXXXXX">+30 XXXXXXXXXX</a>
-            </div>
-            <div class="contact-item">
-              <span class="contact-label">Email</span>
-              <a class="link contact-value" href="mailto:hello@example.com">hello@example.com</a>
-            </div>
-
-            <div class="divider"></div>
-
-            <form class="contact-form">
-              <div class="field">
-                <label class="field-label" for="name">Ονοματεπώνυμο</label>
-                <input class="input" id="name" name="name" autocomplete="name" required>
-              </div>
-              <div class="field">
-                <label class="field-label" for="msg">Μήνυμα</label>
-                <textarea class="textarea" id="msg" name="message" required></textarea>
-              </div>
-              <div class="form-actions">
-                <button class="btn btn--primary" type="submit">Αποστολή</button>
-                <a class="btn btn--outline" href="#services">Υπηρεσίες</a>
-              </div>
-            </form>
-          </div>
-
-          <div class="map-card" aria-label="Χάρτης">
-            <iframe title="Χάρτης" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=Rhodes&output=embed"></iframe>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container footer-inner">
-        <p class="fine">© <span id="year"></span> Νικολέτα Πλατή</p>
-        <!-- ✅ έβγαλα το "Πάνω" από εδώ -->
-      </div>
-    </footer>
-  </main>
-
-  <!-- ✅ Back to top button -->
-  <button class="to-top" type="button" aria-label="Πάνω" title="Πάνω">
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 5l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M12 5l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-  </button>
-
-  <script>
-    // year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // mobile nav toggle
-    const toggle = document.querySelector(".nav-toggle");
-    const mobileNav = document.querySelector(".mobile-nav");
-    const body = document.body;
-
-    function closeMenu(){
-      toggle.setAttribute("aria-expanded", "false");
-      mobileNav.classList.remove("is-open");
-      mobileNav.setAttribute("aria-hidden", "true");
-      body.classList.remove("no-scroll");
-    }
-
-    function openMenu(){
-      toggle.setAttribute("aria-expanded", "true");
-      mobileNav.classList.add("is-open");
-      mobileNav.setAttribute("aria-hidden", "false");
-      body.classList.add("no-scroll");
-    }
-
-    toggle.addEventListener("click", () => {
-      const expanded = toggle.getAttribute("aria-expanded") === "true";
-      expanded ? closeMenu() : openMenu();
-    });
-
-    mobileNav.addEventListener("click", (e) => {
-      if(e.target === mobileNav) closeMenu();
-    });
-
-    mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
-    window.addEventListener("keydown", (e) => { if(e.key === "Escape") closeMenu(); });
-
-    // tiny delay on anchor scroll (subtle)
-    (function(){
-      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (prefersReduced) return;
-
-      const DELAY_MS = 70;
-      const selector = 'a[href^="#"]:not([href="#"])';
-
-      document.querySelectorAll(selector).forEach(a => {
-        a.addEventListener("click", (e) => {
-          const href = a.getAttribute("href");
-          if (!href || href.length < 2) return;
-
-          const id = href.slice(1);
-          const target = document.getElementById(id);
-          if (!target) return;
-
-          e.preventDefault();
-          history.pushState(null, "", href);
-
-          setTimeout(() => {
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-          }, DELAY_MS);
-        });
-      });
-    })();
-
-    // ✅ Back to top button behavior
-    (function(){
-      const btn = document.querySelector(".to-top");
-      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-      function onScroll(){
-        const show = window.scrollY > 420;
-        btn.classList.toggle("is-visible", show);
-      }
-
-      window.addEventListener("scroll", onScroll, { passive: true });
-      onScroll();
-
-      btn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
-      });
-    })();
-  </script>
-</body>
-</html>
+/* Responsive */
+@media (max-width: 980px){
+  .hero{ grid-template-columns:1fr; }
+  .hero-right{ min-height: 420px; }
+  .strip{ grid-template-columns:1fr; }
+  .strip .badges{ justify-content:flex-start; }
+  .grid3{ grid-template-columns:1fr; }
+  .two{ grid-template-columns:1fr; }
+  .pricing{ grid-template-columns:1fr; }
+  .contact{ grid-template-columns:1fr; }
+  .menu{ display:none; }
+  .hamburger{ display:inline-flex; align-items:center; justify-content:center; }
+  .mobileMenu{ display:block; }
+}
+@media (prefers-reduced-motion: reduce){
+  *{ transition:none !important; scroll-behavior:auto; }
+}
