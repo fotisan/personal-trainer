@@ -1,790 +1,519 @@
-:root{
-  --bg-0:#f6f2ff;
-  --bg-1:#eef7ff;
-  --ink:#12131a;
-  --muted:rgba(18,19,26,.68);
-  --soft:rgba(18,19,26,.08);
-  --card:rgba(255,255,255,.62);
-  --card-2:rgba(255,255,255,.78);
-  --stroke:rgba(18,19,26,.12);
-  --shadow: 0 26px 80px rgba(18,19,26,.12);
-  --shadow-2: 0 14px 40px rgba(18,19,26,.10);
-  --radius:22px;
-  --radius-2:16px;
-  --max:1120px;
-  --accent:#2f6cff;
-  --accent-2:#8b5cf6;
-  --ok:#1aa36f;
-  --warn:#ff7a59;
-  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-}
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personal Trainer San Diego | Προπόνηση 1:1 & Online | Nikos Alexiou</title>
+  <meta name="description" content="Personal Trainer στο Σαν Ντιέγκο. Προπόνηση 1:1 και online με πρόγραμμα που ταιριάζει σε πραγματική ζωή. Δύναμη, στάση, ενέργεια, μετρήσιμη πρόοδος." />
+  <meta name="theme-color" content="#f6f2ff" />
 
-*{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
-body{
-  margin:0;
-  font-family:var(--font);
-  color:var(--ink);
-  background:
-    radial-gradient(900px 520px at 18% 12%, rgba(139,92,246,.14), transparent 60%),
-    radial-gradient(900px 520px at 82% 22%, rgba(47,108,255,.12), transparent 60%),
-    linear-gradient(180deg, var(--bg-0), var(--bg-1));
-  min-height:100vh;
-}
+  <link rel="stylesheet" href="styles.css" />
 
-a{ color:inherit; text-decoration:none; }
-.wrap{ width:min(var(--max), calc(100% - 40px)); margin:0 auto; }
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"Nikos Alexiou Personal Training",
+    "description":"Personal Trainer στο Σαν Ντιέγκο. Προπόνηση 1:1 και online με πρόγραμμα, πρόοδο και ξεκάθαρη καθοδήγηση.",
+    "areaServed":"San Diego, CA",
+    "telephone":"+1-619-555-0148",
+    "address":{
+      "@type":"PostalAddress",
+      "addressLocality":"San Diego",
+      "addressRegion":"CA",
+      "addressCountry":"US"
+    },
+    "url":"https://example.com"
+  }
+  </script>
+</head>
 
-/* Top spacing */
-.page{
-  padding:34px 0 84px;
-}
+<body>
+  <div class="page">
+    <div class="wrap">
+      <div class="hero-card" id="top">
+        <div class="noise" aria-hidden="true"></div>
 
-/* Hero card */
-.hero-card{
-  position:relative;
-  border-radius:30px;
-  background: linear-gradient(180deg, rgba(255,255,255,.58), rgba(255,255,255,.38));
-  box-shadow: var(--shadow);
-  border:1px solid rgba(255,255,255,.65);
-  overflow:hidden;
-  isolation:isolate;
-}
-.hero-card::before{
-  content:"";
-  position:absolute;
-  inset:-120px -180px auto auto;
-  width:520px;
-  height:520px;
-  border-radius:999px;
-  background: radial-gradient(circle at 40% 40%, rgba(139,92,246,.18), transparent 62%),
-            radial-gradient(circle at 60% 60%, rgba(47,108,255,.14), transparent 62%);
-  filter: blur(2px);
-  z-index:0;
-}
-.hero-card::after{
-  content:"";
-  position:absolute;
-  inset:auto -220px -220px auto;
-  width:520px;
-  height:520px;
-  border-radius:999px;
-  background: radial-gradient(circle at 40% 40%, rgba(47,108,255,.16), transparent 62%),
-            radial-gradient(circle at 60% 60%, rgba(139,92,246,.12), transparent 62%);
-  z-index:0;
-}
+        <div class="card-nav">
+          <a class="brand" href="#top" aria-label="Αρχή">
+            <div class="dotgrid" aria-hidden="true">
+              <span></span><span></span><span></span>
+              <span></span><span></span><span></span>
+              <span></span><span></span><span></span>
+            </div>
+            <div class="brand-name">
+              <strong>NIKOS ALEXIOU</strong>
+              <small>Personal Training, San Diego CA</small>
+            </div>
+          </a>
 
-/* Noise overlay */
-.noise{
-  pointer-events:none;
-  position:absolute;
-  inset:0;
-  opacity:.12;
-  mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
-  z-index:1;
-}
+          <div class="nav-actions">
+            <div class="pill" title="Περιοχή εξυπηρέτησης">
+              <span class="pin" aria-hidden="true"></span>
+              <span>La Jolla, North Park, Downtown</span>
+            </div>
 
-/* Nav inside card */
-.card-nav{
-  position:relative;
-  z-index:2;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-  padding:18px 18px 12px;
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  min-width: 240px;
-}
-.dotgrid{
-  width:34px; height:34px;
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:4px;
-  padding:8px;
-  border-radius:12px;
-  background:rgba(255,255,255,.62);
-  border:1px solid rgba(18,19,26,.10);
-  box-shadow: var(--shadow-2);
-}
-.dotgrid span{
-  width:4px; height:4px;
-  border-radius:2px;
-  background:rgba(18,19,26,.65);
-  display:block;
-  margin:auto;
-}
-.brand-name{
-  display:flex;
-  flex-direction:column;
-  line-height:1.1;
-}
-.brand-name strong{
-  font-size:13px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-}
-.brand-name small{
-  color:var(--muted);
-  font-size:12px;
-  margin-top:3px;
-}
+            <a class="btn primary" href="#contact">Κλείσε αξιολόγηση</a>
 
-.nav-actions{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.pill{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:10px 12px;
-  border-radius:999px;
-  background: rgba(255,255,255,.72);
-  border:1px solid rgba(18,19,26,.10);
-  box-shadow: var(--shadow-2);
-  font-size:13px;
-  color:rgba(18,19,26,.82);
-  white-space:nowrap;
-}
-.pill .pin{
-  width:8px; height:8px; border-radius:99px;
-  background:linear-gradient(180deg, rgba(47,108,255,.9), rgba(139,92,246,.9));
-  box-shadow:0 0 0 3px rgba(47,108,255,.12);
-}
+            <button class="hamburger" id="hamburger" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="mobileMenu">
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
 
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  padding:12px 14px;
-  border-radius:999px;
-  border:1px solid rgba(18,19,26,.12);
-  background: rgba(255,255,255,.72);
-  box-shadow: var(--shadow-2);
-  font-weight:600;
-  font-size:13px;
-  cursor:pointer;
-  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
-  user-select:none;
-}
-.btn:hover{ transform: translateY(-1px); box-shadow: 0 18px 46px rgba(18,19,26,.14); }
-.btn.primary{
-  background: linear-gradient(180deg, rgba(47,108,255,.96), rgba(139,92,246,.92));
-  border-color: rgba(255,255,255,.34);
-  color:white;
-}
-.btn.primary:hover{ box-shadow: 0 24px 60px rgba(47,108,255,.22); }
+        <nav class="menu" aria-label="Κύριο μενού">
+          <a href="#services">Υπηρεσίες</a>
+          <a href="#approach">Τρόπος δουλειάς</a>
+          <a href="#results">Αποτελέσματα</a>
+          <a href="#pricing">Πακέτα</a>
+          <a href="#faq">Ερωτήσεις</a>
+          <a href="#contact">Επικοινωνία</a>
+        </nav>
 
-/* Mobile menu */
-.hamburger{
-  width:44px; height:44px;
-  border-radius:14px;
-  border:1px solid rgba(18,19,26,.10);
-  background: rgba(255,255,255,.62);
-  box-shadow: var(--shadow-2);
-  display:none;
-  position:relative;
-  cursor:pointer;
-}
-.hamburger span{
-  position:absolute;
-  left:12px; right:12px;
-  height:2px;
-  background: rgba(18,19,26,.78);
-  border-radius:2px;
-  transition: transform .18s ease, top .18s ease, opacity .18s ease;
-}
-.hamburger span:nth-child(1){ top:15px; }
-.hamburger span:nth-child(2){ top:21px; opacity:.9; }
-.hamburger span:nth-child(3){ top:27px; }
+        <div class="mobileMenu" id="mobileMenu" hidden>
+          <div class="panel">
+            <a href="#services">Υπηρεσίες</a>
+            <a href="#approach">Τρόπος δουλειάς</a>
+            <a href="#results">Αποτελέσματα</a>
+            <a href="#pricing">Πακέτα</a>
+            <a href="#faq">Ερωτήσεις</a>
+            <a href="#contact">Επικοινωνία</a>
+          </div>
+        </div>
 
-.menu{
-  display:flex;
-  gap:16px;
-  align-items:center;
-  padding:0 18px 12px;
-  position:relative;
-  z-index:2;
-}
-.menu a{
-  font-size:13px;
-  color:rgba(18,19,26,.78);
-  padding:10px 10px;
-  border-radius:999px;
-  transition: background .15s ease;
-}
-.menu a:hover{ background: rgba(255,255,255,.60); }
+        <div class="hero">
+          <div class="hero-left">
+            <div class="kicker">
+              <span class="chip">1:1 και Online Coaching</span>
+              <span>Δύναμη, στάση, ενέργεια, μετρήσιμη πρόοδος</span>
+            </div>
 
-.mobileMenu{
-  display:none;
-  position:relative;
-  z-index:3;
-  padding:10px 18px 16px;
-}
-.mobileMenu .panel{
-  border-radius:18px;
-  background: rgba(255,255,255,.80);
-  border:1px solid rgba(18,19,26,.10);
-  box-shadow: var(--shadow-2);
-  padding:10px;
-  display:grid;
-  gap:6px;
-}
-.mobileMenu a{
-  padding:12px 12px;
-  border-radius:14px;
-  font-size:14px;
-  color:rgba(18,19,26,.84);
-}
-.mobileMenu a:hover{ background: rgba(18,19,26,.06); }
+            <h1>Προπόνηση που ταιριάζει σε πραγματική ζωή, όχι σε τέλειες εβδομάδες</h1>
+            <p class="sub">
+              Είμαι personal trainer στο Σαν Ντιέγκο και δουλεύω με ανθρώπους που θέλουν αποτελέσματα με πρόγραμμα που
+              μπορεί να τηρηθεί. Χωρίς χάος, χωρίς υπερβολές, με καθοδήγηση που σε κρατάει σταθερό.
+            </p>
 
-/* Hero layout */
-.hero{
-  position:relative;
-  z-index:2;
-  display:grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap:22px;
-  padding:26px 22px 22px;
-  align-items:stretch;
-}
+            <div class="cta-row">
+              <a class="btn primary" href="#contact">
+                Κλείσε αξιολόγηση 15 λεπτών
+                <span class="arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M13 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </a>
+              <a class="btn" href="#pricing">Δες πακέτα</a>
+            </div>
 
-.hero-left{
-  padding:16px 10px 18px;
-}
-.kicker{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:14px;
-  color:rgba(18,19,26,.74);
-  font-size:13px;
-}
-.kicker .chip{
-  padding:8px 10px;
-  border-radius:999px;
-  background: rgba(255,255,255,.70);
-  border:1px solid rgba(18,19,26,.10);
-  box-shadow: var(--shadow-2);
-  font-weight:600;
-}
-h1{
-  margin:0;
-  font-size: clamp(30px, 3.4vw, 48px);
-  letter-spacing:-.02em;
-  line-height:1.05;
-}
-.sub{
-  margin:14px 0 0;
-  color:var(--muted);
-  font-size:16px;
-  line-height:1.6;
-  max-width:52ch;
-}
-.cta-row{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  flex-wrap:wrap;
-  margin-top:18px;
-}
-.micro{
-  margin-top:14px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-  color:rgba(18,19,26,.70);
-  font-size:13px;
-}
-.micro .tick{
-  width:18px; height:18px;
-  border-radius:99px;
-  background: rgba(26,163,111,.16);
-  display:grid; place-items:center;
-  border:1px solid rgba(26,163,111,.22);
-}
-.micro svg{ width:12px; height:12px; }
+            <div class="micro">
+              <span class="tick" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M20 7L10 17l-5-5" stroke="rgba(26,163,111,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Πλάνο δύναμης και κινητικότητας</span>
 
-.hero-right{
-  position:relative;
-  border-radius:24px;
-  background: linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.46));
-  border:1px solid rgba(18,19,26,.10);
-  box-shadow: var(--shadow-2);
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  min-height:420px;
-}
+              <span class="tick" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M20 7L10 17l-5-5" stroke="rgba(26,163,111,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Tracking προόδου σε απλά metrics</span>
 
-.visual{
-  position:relative;
-  height: 62%;
-  min-height:260px;
-  overflow:hidden;
-  display:grid;
-  place-items:center;
-}
-.visual::before{
-  content:"";
-  position:absolute;
-  inset:-40px;
-  background:
-    radial-gradient(220px 180px at 35% 40%, rgba(47,108,255,.22), transparent 62%),
-    radial-gradient(260px 220px at 68% 55%, rgba(139,92,246,.18), transparent 62%),
-    radial-gradient(220px 220px at 52% 20%, rgba(255,122,89,.12), transparent 64%);
-  filter: blur(1px);
-}
-.silhouette{
-  position:relative;
-  z-index:2;
-  width:min(320px, 86%);
-  aspect-ratio: 4 / 5;
-  border-radius:24px;
-  background:
-    linear-gradient(180deg, rgba(18,19,26,.06), rgba(18,19,26,.02)),
-    radial-gradient(140px 120px at 55% 40%, rgba(255,255,255,.65), rgba(255,255,255,.10));
-  border:1px solid rgba(18,19,26,.10);
-  box-shadow: 0 26px 70px rgba(18,19,26,.14);
-  overflow:hidden;
-}
-.silhouette .img{
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(180px 140px at 55% 35%, rgba(255,255,255,.75), transparent 60%),
-    radial-gradient(240px 220px at 50% 70%, rgba(47,108,255,.12), transparent 62%),
-    linear-gradient(180deg, rgba(18,19,26,.06), rgba(18,19,26,.02));
-}
-.silhouette .label{
-  position:absolute;
-  left:14px;
-  top:14px;
-  padding:8px 10px;
-  border-radius:999px;
-  background: rgba(255,255,255,.78);
-  border:1px solid rgba(18,19,26,.10);
-  font-size:12px;
-  color:rgba(18,19,26,.78);
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-.pulse{
-  width:10px; height:10px;
-  border-radius:99px;
-  background: linear-gradient(180deg, rgba(26,163,111,.9), rgba(26,163,111,.62));
-  box-shadow: 0 0 0 6px rgba(26,163,111,.14);
-}
+              <span class="tick" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M20 7L10 17l-5-5" stroke="rgba(26,163,111,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Υποστήριξη με ξεκάθαρες οδηγίες</span>
+            </div>
+          </div>
 
-.side-info{
-  position:relative;
-  z-index:2;
-  padding:14px 16px 16px;
-  display:grid;
-  gap:10px;
-}
-.metrics{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:10px;
-}
-.metric{
-  border-radius:16px;
-  background: rgba(255,255,255,.72);
-  border:1px solid rgba(18,19,26,.10);
-  padding:12px 12px;
-  box-shadow: var(--shadow-2);
-}
-.metric strong{
-  display:block;
-  font-size:14px;
-}
-.metric small{
-  display:block;
-  margin-top:4px;
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.35;
-}
+          <aside class="hero-right" aria-label="Πλαίσιο πληροφοριών">
+            <div class="visual">
+              <div class="silhouette" aria-hidden="true">
+                <div class="img"></div>
+                <div class="label">
+                  <span class="pulse" aria-hidden="true"></span>
+                  <span>Διαθέσιμες θέσεις αυτόν τον μήνα</span>
+                </div>
+              </div>
+            </div>
 
-.social-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-top:6px;
-}
-.social{
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
-.iconbtn{
-  width:42px; height:42px;
-  border-radius:14px;
-  border:1px solid rgba(18,19,26,.10);
-  background: rgba(255,255,255,.74);
-  box-shadow: var(--shadow-2);
-  display:grid;
-  place-items:center;
-  transition: transform .15s ease;
-}
-.iconbtn:hover{ transform: translateY(-1px); }
-.iconbtn svg{ width:18px; height:18px; opacity:.86; }
+            <div class="side-info">
+              <div class="metrics">
+                <div class="metric">
+                  <strong>Δομή που κρατάει</strong>
+                  <small>Πλάνο εβδομάδας με προτεραιότητες και εναλλακτικές όταν δεν βγαίνει ο χρόνος.</small>
+                </div>
+                <div class="metric">
+                  <strong>Πρόοδος που φαίνεται</strong>
+                  <small>Δύναμη, μέση, στάση, ενέργεια. Βλέπεις αλλαγή σε 4 έως 6 εβδομάδες.</small>
+                </div>
+              </div>
 
-.tiny-cta{
-  font-size:13px;
-  color:rgba(18,19,26,.78);
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:10px 12px;
-  border-radius:999px;
-  background: rgba(255,255,255,.72);
-  border:1px solid rgba(18,19,26,.10);
-  box-shadow: var(--shadow-2);
-  white-space:nowrap;
-}
-.arrow{
-  width:18px; height:18px;
-  border-radius:99px;
-  display:grid; place-items:center;
-  background: rgba(47,108,255,.12);
-  border:1px solid rgba(47,108,255,.18);
-}
+              <div class="social-row">
+                <div class="social" aria-label="Social links">
+                  <a class="iconbtn" href="#" aria-label="Instagram" title="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z" stroke="currentColor" stroke-width="2"/>
+                      <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="2"/>
+                      <path d="M17.5 6.5h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                  </a>
+                  <a class="iconbtn" href="#" aria-label="TikTok" title="TikTok">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M14 3v10.2a4.8 4.8 0 1 1-4-4.73" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M14 6c.9 2.4 3 4 6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </a>
+                  <a class="iconbtn" href="#" aria-label="LinkedIn" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M4 4.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" stroke="currentColor" stroke-width="2"/>
+                      <path d="M4 10v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M9 10v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M9 14c0-2.2 1.3-4 3.6-4 2.5 0 3.4 1.7 3.4 4.3V20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </a>
+                </div>
 
-/* Below hero content */
-.below{
-  padding:18px 22px 22px;
-  position:relative;
-  z-index:2;
-}
-.strip{
-  display:grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap:12px;
-  align-items:center;
-  border-radius:22px;
-  background: rgba(255,255,255,.58);
-  border:1px solid rgba(18,19,26,.10);
-  box-shadow: var(--shadow-2);
-  padding:14px 14px;
-}
-.strip p{
-  margin:0;
-  color:rgba(18,19,26,.74);
-  font-size:13px;
-  line-height:1.55;
-}
-.strip .badges{
-  display:flex;
-  gap:8px;
-  justify-content:flex-end;
-  flex-wrap:wrap;
-}
-.badge{
-  padding:10px 12px;
-  border-radius:999px;
-  background: rgba(255,255,255,.74);
-  border:1px solid rgba(18,19,26,.10);
-  font-size:12px;
-  color:rgba(18,19,26,.76);
-  box-shadow: var(--shadow-2);
-}
+                <a class="tiny-cta" href="#services">
+                  Δες τι περιλαμβάνει
+                  <span class="arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M13 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </aside>
+        </div>
 
-/* Sections */
-section{
-  padding:54px 0;
-}
-.section-head{
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:16px;
-  margin-bottom:18px;
-}
-.section-head h2{
-  margin:0;
-  font-size:28px;
-  letter-spacing:-.02em;
-}
-.section-head p{
-  margin:0;
-  max-width:56ch;
-  color:var(--muted);
-  line-height:1.6;
-  font-size:15px;
-}
+        <div class="below">
+          <div class="strip">
+            <p>
+              Δουλεύω με βάση στόχο, περιορισμούς και καθημερινότητα.
+              Αν έχεις ήδη δοκιμάσει πολλά και το πρόβλημα είναι η συνέπεια, εδώ χτίζουμε σύστημα.
+            </p>
+            <div class="badges" aria-label="Ενδείξεις εμπιστοσύνης">
+              <span class="badge">San Diego, CA</span>
+              <span class="badge">1:1 Sessions</span>
+              <span class="badge">Online Coaching</span>
+              <span class="badge">Progress Tracking</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-.grid3{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:14px;
-}
-.card{
-  border-radius:22px;
-  background: rgba(255,255,255,.62);
-  border:1px solid rgba(18,19,26,.10);
-  box-shadow: var(--shadow-2);
-  padding:18px;
-}
-.card h3{
-  margin:0 0 10px;
-  font-size:18px;
-  letter-spacing:-.01em;
-}
-.card p{
-  margin:0;
-  color:var(--muted);
-  line-height:1.65;
-  font-size:14px;
-}
-.list{
-  margin:12px 0 0;
-  padding:0;
-  list-style:none;
-  display:grid;
-  gap:10px;
-}
-.list li{
-  display:flex;
-  gap:10px;
-  align-items:flex-start;
-  color:rgba(18,19,26,.78);
-  font-size:14px;
-  line-height:1.5;
-}
-.list .dot{
-  width:20px; height:20px;
-  border-radius:8px;
-  background: rgba(47,108,255,.10);
-  border:1px solid rgba(47,108,255,.16);
-  display:grid;
-  place-items:center;
-  flex:0 0 20px;
-  margin-top:1px;
-}
-.list .dot svg{ width:12px; height:12px; }
+      <section id="services">
+        <div class="section-head">
+          <h2>Υπηρεσίες</h2>
+          <p>Επιλέγεις το format που σε εξυπηρετεί και κρατάμε την ίδια ποιότητα καθοδήγησης.</p>
+        </div>
 
-.two{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:14px;
-  align-items:stretch;
-}
+        <div class="grid3">
+          <div class="card">
+            <h3>Personal Training 1:1</h3>
+            <p>Συνεδρίες με έλεγχο τεχνικής, δομή προπόνησης και προτεραιότητες για πραγματική πρόοδο.</p>
+            <ul class="list">
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span> Δύναμη και μυϊκή ανάπτυξη με ασφάλεια</li>
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span> Κινητικότητα για μέση, ισχία, ώμους</li>
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span> Οργάνωση εβδομάδας χωρίς υπερβολές</li>
+            </ul>
+          </div>
 
-.quote{
-  border-radius:26px;
-  background: linear-gradient(180deg, rgba(255,255,255,.66), rgba(255,255,255,.52));
-  border:1px solid rgba(18,19,26,.10);
-  box-shadow: var(--shadow-2);
-  padding:22px;
-}
-.quote blockquote{
-  margin:0;
-  font-size:16px;
-  line-height:1.7;
-  color:rgba(18,19,26,.80);
-}
-.quote .who{
-  margin-top:14px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  color:var(--muted);
-  font-size:13px;
-}
+          <div class="card">
+            <h3>Online Coaching</h3>
+            <p>Πρόγραμμα που εκτελείς μόνος σου, με feedback, adjustments και tracking προόδου.</p>
+            <ul class="list">
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span> Εβδομαδιαίο πρόγραμμα και εναλλακτικές</li>
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span> Τεχνική με video feedback όπου χρειάζεται</li>
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span> Μέτρηση προόδου σε απλά σημεία</li>
+            </ul>
+          </div>
 
-/* Pricing */
-.pricing{
-  display:grid;
-  grid-template-columns: 1.05fr .95fr .95fr;
-  gap:14px;
-  align-items:stretch;
-}
-.price{
-  border-radius:26px;
-  background: rgba(255,255,255,.62);
-  border:1px solid rgba(18,19,26,.10);
-  box-shadow: var(--shadow-2);
-  padding:20px;
-  position:relative;
-  overflow:hidden;
-}
-.price.featured{
-  background: linear-gradient(180deg, rgba(47,108,255,.10), rgba(255,255,255,.60));
-  border-color: rgba(47,108,255,.18);
-}
-.price .tag{
-  position:absolute;
-  top:14px;
-  right:14px;
-  padding:9px 11px;
-  border-radius:999px;
-  background: rgba(255,255,255,.78);
-  border:1px solid rgba(18,19,26,.10);
-  box-shadow: var(--shadow-2);
-  font-size:12px;
-  color:rgba(18,19,26,.76);
-}
-.price h3{ margin:0 0 10px; }
-.amount{
-  font-size:28px;
-  font-weight:800;
-  letter-spacing:-.02em;
-  margin:0;
-}
-.amount small{
-  font-size:13px;
-  font-weight:600;
-  color:var(--muted);
-}
-.price .desc{
-  margin-top:10px;
-  color:var(--muted);
-  line-height:1.6;
-  font-size:14px;
-}
-.price .btn{ margin-top:14px; width:100%; }
+          <div class="card">
+            <h3>Strength and Rehab Focus</h3>
+            <p>Για όσους θέλουν να δυναμώσουν χωρίς να επιβαρύνουν μέση, γόνατα, ώμους.</p>
+            <ul class="list">
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span> Σταθερότητα και έλεγχος κίνησης</li>
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span> Επιστροφή σε προπόνηση με αυτοπεποίθηση</li>
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span> Προοδευτικότητα χωρίς άλματα</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-.fine{
-  margin-top:12px;
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.6;
-}
+      <section id="approach">
+        <div class="section-head">
+          <h2>Τρόπος δουλειάς</h2>
+          <p>Η προπόνηση γίνεται απλή όταν ξέρεις τι έχει προτεραιότητα και τι είναι απλώς θόρυβος.</p>
+        </div>
 
-/* FAQ */
-details{
-  border-radius:20px;
-  background: rgba(255,255,255,.62);
-  border:1px solid rgba(18,19,26,.10);
-  box-shadow: var(--shadow-2);
-  padding:14px 16px;
-}
-details + details{ margin-top:10px; }
-summary{
-  cursor:pointer;
-  font-weight:700;
-  color:rgba(18,19,26,.86);
-  list-style:none;
-}
-summary::-webkit-details-marker{ display:none; }
-details p{
-  margin:10px 0 0;
-  color:var(--muted);
-  line-height:1.7;
-  font-size:14px;
-}
+        <div class="two">
+          <div class="card">
+            <h3>1. Αξιολόγηση</h3>
+            <p>Στόχος, ιστορικό, περιορισμοί, επίπεδο, χρόνος. Φτιάχνουμε ένα πλάνο που μπορείς να τηρήσεις.</p>
+            <ul class="list">
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 6v6l4 2" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span> Χρόνος διαθέσιμος ανά εβδομάδα</li>
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round"/><path d="M12 5v14" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round"/></svg>
+              </span> Στόχος σε μετρήσιμα σημεία</li>
+            </ul>
+          </div>
 
-/* Contact */
-.contact{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:14px;
-  align-items:stretch;
-}
-.form{
-  display:grid;
-  gap:10px;
-  margin-top:10px;
-}
-label{
-  font-size:13px;
-  color:rgba(18,19,26,.78);
-  font-weight:600;
-}
-input, select, textarea{
-  width:100%;
-  border-radius:16px;
-  border:1px solid rgba(18,19,26,.12);
-  background: rgba(255,255,255,.74);
-  padding:12px 12px;
-  font:inherit;
-  outline:none;
-  transition: box-shadow .15s ease, border-color .15s ease;
-}
-textarea{ min-height:110px; resize:vertical; }
-input:focus, select:focus, textarea:focus{
-  border-color: rgba(47,108,255,.32);
-  box-shadow: 0 0 0 6px rgba(47,108,255,.12);
-}
+          <div class="card">
+            <h3>2. Πρόγραμμα και εκτέλεση</h3>
+            <p>Σταθερή βάση με προοδευτικότητα. Δεν κυνηγάμε κούραση. Κυνηγάμε αποτέλεσμα.</p>
+            <ul class="list">
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 12l4 4 12-12" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span> Ασκήσεις που ταιριάζουν στο σώμα σου</li>
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round"/><path d="M5 9l7-7 7 7" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span> Πρόοδος σε κιλά, επαναλήψεις, ποιότητα</li>
+            </ul>
+          </div>
 
-/* Footer */
-footer{
-  padding:28px 0 40px;
-  color:rgba(18,19,26,.70);
-  font-size:13px;
-}
-.foot{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:14px;
-  flex-wrap:wrap;
-}
-.foot a{ color:rgba(18,19,26,.78); }
+          <div class="card">
+            <h3>3. Tracking και προσαρμογές</h3>
+            <p>Κρατάμε μικρά δεδομένα και κάνουμε σωστές αλλαγές, όχι νέα αρχή κάθε Δευτέρα.</p>
+          </div>
 
-/* Modal */
-.modal{
-  position:fixed;
-  inset:0;
-  background: rgba(18,19,26,.46);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  z-index:50;
-}
-.modal[aria-hidden="false"]{ display:flex; }
-.modal .box{
-  width:min(560px, 100%);
-  border-radius:26px;
-  background: rgba(255,255,255,.88);
-  border:1px solid rgba(255,255,255,.55);
-  box-shadow: 0 36px 120px rgba(0,0,0,.22);
-  padding:18px;
-  position:relative;
-}
-.modal .box h3{ margin:6px 0 8px; }
-.modal .box p{ margin:0; color:var(--muted); line-height:1.7; }
-.modal .x{
-  position:absolute;
-  top:12px; right:12px;
-  width:44px; height:44px;
-  border-radius:14px;
-  border:1px solid rgba(18,19,26,.12);
-  background: rgba(255,255,255,.78);
-  cursor:pointer;
-  box-shadow: var(--shadow-2);
-}
+          <div class="card">
+            <h3>4. Συνέπεια με λιγότερη πίεση</h3>
+            <p>Δίνω δομή, εναλλακτικές και πλαίσιο. Έτσι μένεις στο πρόγραμμα ακόμα και στις δύσκολες εβδομάδες.</p>
+          </div>
+        </div>
+      </section>
 
-/* Responsive */
-@media (max-width: 980px){
-  .hero{ grid-template-columns:1fr; }
-  .hero-right{ min-height: 420px; }
-  .strip{ grid-template-columns:1fr; }
-  .strip .badges{ justify-content:flex-start; }
-  .grid3{ grid-template-columns:1fr; }
-  .two{ grid-template-columns:1fr; }
-  .pricing{ grid-template-columns:1fr; }
-  .contact{ grid-template-columns:1fr; }
-  .menu{ display:none; }
-  .hamburger{ display:inline-flex; align-items:center; justify-content:center; }
-  .mobileMenu{ display:block; }
-}
-@media (prefers-reduced-motion: reduce){
-  *{ transition:none !important; scroll-behavior:auto; }
-}
+      <section id="results">
+        <div class="section-head">
+          <h2>Αποτελέσματα που έχουν νόημα</h2>
+          <p>Όχι μόνο κιλά. Θέλεις δύναμη, καλύτερη στάση, ενέργεια και σώμα που αντέχει.</p>
+        </div>
+
+        <div class="two">
+          <div class="quote">
+            <blockquote>
+              Σε έξι εβδομάδες ένιωθα πιο σταθερός στη μέση, κοιμόμουν καλύτερα και οι προπονήσεις είχαν επιτέλους λογική.
+              Δεν ήταν κάτι ακραίο. Ήταν κάτι που κράτησε.
+            </blockquote>
+            <div class="who">
+              <span>Client, 34, San Diego</span>
+              <span>Online Coaching</span>
+            </div>
+          </div>
+
+          <div class="quote">
+            <blockquote>
+              Μετά από χρόνια που ξεκινούσα και σταματούσα, αυτό ήταν το πρώτο πλάνο που έμοιαζε φτιαγμένο για τη ζωή μου.
+              Τώρα ξέρω ακριβώς τι να κάνω μέσα στην εβδομάδα.
+            </blockquote>
+            <div class="who">
+              <span>Client, 41, La Jolla</span>
+              <span>1:1 Sessions</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing">
+        <div class="section-head">
+          <h2>Πακέτα</h2>
+          <p>Απλά πακέτα που καλύπτουν τις περισσότερες ανάγκες. Θα προτείνω το σωστό μετά την αξιολόγηση.</p>
+        </div>
+
+        <div class="pricing">
+          <div class="price">
+            <h3>Starter</h3>
+            <p class="amount">$149 <small>ανά μήνα</small></p>
+            <p class="desc">Online πρόγραμμα με βασικό tracking και μηνιαίες προσαρμογές.</p>
+            <ul class="list">
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span> Εβδομαδιαίο πρόγραμμα</li>
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span> Tracking βασικών metrics</li>
+            </ul>
+            <a class="btn" href="#contact">Ζήτα θέση</a>
+          </div>
+
+          <div class="price featured">
+            <div class="tag">Most chosen</div>
+            <h3>Coaching Plus</h3>
+            <p class="amount">$249 <small>ανά μήνα</small></p>
+            <p class="desc">Online coaching με συχνές προσαρμογές και πιο στενή καθοδήγηση.</p>
+            <ul class="list">
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span> Πλάνο και εναλλακτικές</li>
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span> Video feedback όταν χρειάζεται</li>
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span> Προσαρμογές μέσα στον μήνα</li>
+            </ul>
+            <a class="btn primary" href="#contact">Κλείσε αξιολόγηση</a>
+          </div>
+
+          <div class="price">
+            <h3>1:1 San Diego</h3>
+            <p class="amount">$95 <small>ανά συνεδρία</small></p>
+            <p class="desc">Για όσους θέλουν hands on προπόνηση με έλεγχο τεχνικής και σαφή δομή.</p>
+            <ul class="list">
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span> Τεχνική και προοδευτικότητα</li>
+              <li><span class="dot" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="rgba(47,108,255,.95)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span> Προσαρμογή σε τραυματισμούς</li>
+            </ul>
+            <a class="btn" href="#contact">Ρώτα για διαθεσιμότητα</a>
+          </div>
+        </div>
+
+        <p class="fine">
+          Οι τιμές είναι ενδεικτικές για demo. Για πραγματικό επαγγελματία στο Σαν Ντιέγκο θα προσαρμοστούν ανάλογα με studio, μετακινήσεις και συχνότητα.
+        </p>
+      </section>
+
+      <section id="faq">
+        <div class="section-head">
+          <h2>Συχνές ερωτήσεις</h2>
+          <p>Απαντήσεις χωρίς υπερβολές, για να ξέρεις αν ταιριάζει σε σένα.</p>
+        </div>
+
+        <details>
+          <summary>Πότε θα δω αποτελέσματα;</summary>
+          <p>Συνήθως μέσα σε 4 έως 6 εβδομάδες βλέπεις καθαρή βελτίωση σε δύναμη, τεχνική και ενέργεια. Το σώμα αλλάζει πιο σταθερά όταν κρατάς ρυθμό.</p>
+        </details>
+
+        <details>
+          <summary>Χρειάζεται να ακολουθώ αυστηρή διατροφή;</summary>
+          <p>Όχι. Στο coaching χρησιμοποιούμε πρακτικές οδηγίες και βασικές αρχές ώστε να τρως καλύτερα χωρίς να νιώθεις ότι ζεις σε πρόγραμμα τιμωρίας.</p>
+        </details>
+
+        <details>
+          <summary>Αν έχω πόνο στη μέση ή στους ώμους μπορώ να ξεκινήσω;</summary>
+          <p>Ναι, εφόσον δεν υπάρχει ιατρικός περιορισμός. Χτίζουμε σταθερότητα και έλεγχο και προχωράμε προοδευτικά με ασκήσεις που σου ταιριάζουν.</p>
+        </details>
+      </section>
+
+      <section id="contact">
+        <div class="section-head">
+          <h2>Επικοινωνία</h2>
+          <p>Στείλε μου λίγα στοιχεία και θα σου πω τι ταιριάζει καλύτερα με βάση τον στόχο σου.</p>
+        </div>
+
+        <div class="contact">
+          <div class="card">
+            <h3>Αξιολόγηση 15 λεπτών</h3>
+            <p>Μιλάμε σύντομα και ξεκαθαρίζουμε στόχο, χρόνο, επίπεδο και το κατάλληλο πρόγραμμα.</p>
+
+            <div class="fine">
+              <strong>Τηλέφωνο:</strong> +1 (619) 555 0148<br/>
+              <strong>Email:</strong> hello@example.com<br/>
+              <strong>Ώρες:</strong> Δευτέρα έως Παρασκευή 07:00 έως 19:00 (Pacific Time)
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Στείλε μήνυμα</h3>
+            <form class="form" id="leadForm">
+              <div>
+                <label for="name">Ονοματεπώνυμο</label>
+                <input id="name" name="name" autocomplete="name" required />
+              </div>
+
+              <div>
+                <label for="goal">Στόχος</label>
+                <select id="goal" name="goal" required>
+                  <option value="">Επίλεξε</option>
+                  <option>Δύναμη και μυϊκή ανάπτυξη</option>
+                  <option>Απώλεια λίπους με συνέπεια</option>
+                  <option>Καλύτερη στάση και λιγότεροι πόνοι</option>
+                  <option>Επιστροφή σε προπόνηση μετά από διάλειμμα</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="format">Πώς προτιμάς να δουλέψουμε</label>
+                <select id="format" name="format" required>
+                  <option value="">Επίλεξε</option>
+                  <option>1:1 στο Σαν Ντιέγκο</option>
+                  <option>Online coaching</option>
+                  <option>Δεν είμαι σίγουρος ακόμα</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="message">Λίγα λόγια για σένα</label>
+                <textarea id="message" name="message" placeholder="Πόσες μέρες μπορείς να προπονείσαι, αν έχεις κάποιον περιορισμό, τι έχεις δοκιμάσει μέχρι τώρα" required></textarea>
+              </div>
+
+              <button class="btn primary" type="submit">Αποστολή</button>
+              <div class="fine">
+                Με την αποστολή συμφωνείς να επικοινωνήσω μαζί σου για τον σκοπό της αξιολόγησης. Δεν στέλνω spam.
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="wrap foot">
+          <div>© <span id="y"></span> Nikos Alexiou Personal Training, San Diego</div>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="#top">Αρχή</a>
+            <a href="#services">Υπηρεσίες</a>
+            <a href="#contact">Επικοινωνία</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Επιβεβαίωση αποστολής">
+    <div class="box">
+      <button class="x" id="closeModal" aria-label="Κλείσιμο">✕</button>
+      <h3>Ευχαριστώ για το μήνυμά σου</h3>
+      <p>
+        Το έλαβα και θα επικοινωνήσω μαζί σου το συντομότερο. Αν θέλεις, γράψε και το καλύτερο χρονικό πλαίσιο για να σε καλέσω.
+      </p>
+      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn primary" href="#top" id="backTop">Επιστροφή στην αρχή</a>
+        <button class="btn" id="okBtn" type="button">Οκ</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
